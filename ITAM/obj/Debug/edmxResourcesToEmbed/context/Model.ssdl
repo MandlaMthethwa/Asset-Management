@@ -1,0 +1,442 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="itamModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="asset">
+    <Key>
+      <PropertyRef Name="asset_id" />
+    </Key>
+    <Property Name="asset_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="model" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="po_number" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="manufacture" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="serial_number" Type="varchar" MaxLength="20" />
+    <Property Name="description" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="warranty_date" Type="date" Nullable="false" />
+    <Property Name="status_id" Type="int" Nullable="false" />
+    <Property Name="order_id" Type="int" Nullable="false" />
+    <Property Name="asset_type_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="asset_type">
+    <Key>
+      <PropertyRef Name="type_id" />
+    </Key>
+    <Property Name="type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="asset_type" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="assign">
+    <Key>
+      <PropertyRef Name="assign_id" />
+    </Key>
+    <Property Name="assign_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="assign_name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="department" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="icf" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="asset_id" Type="int" Nullable="false" />
+    <Property Name="status_id" Type="int" Nullable="false" />
+    <Property Name="technician_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="item">
+    <Key>
+      <PropertyRef Name="item_id" />
+    </Key>
+    <Property Name="item_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="item_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="manufacture" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="order_id" Type="int" />
+  </EntityType>
+  <EntityType Name="location">
+    <Key>
+      <PropertyRef Name="location_id" />
+    </Key>
+    <Property Name="location_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="serial_number" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="location" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="asset_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="notification">
+    <Key>
+      <PropertyRef Name="notify_id" />
+    </Key>
+    <Property Name="notify_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="message" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="requester_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="order_number" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="order_date" Type="date" />
+    <Property Name="eta" Type="date" />
+    <Property Name="invoice_number" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="requester">
+    <Key>
+      <PropertyRef Name="requester_id" />
+    </Key>
+    <Property Name="requester_id" Type="int" Nullable="false" />
+    <Property Name="requester_name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="requester_email_address" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="requester_contact_number" Type="varchar" MaxLength="12" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'itam.dbo.return_asset' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="return_asset">
+    <Key>
+      <PropertyRef Name="return_id" />
+      <PropertyRef Name="serial_number" />
+      <PropertyRef Name="return_date" />
+      <PropertyRef Name="manufacture" />
+      <PropertyRef Name="warranty_date" />
+      <PropertyRef Name="asset_id" />
+      <PropertyRef Name="asset_type_id" />
+      <PropertyRef Name="status_id" />
+    </Key>
+    <Property Name="return_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="serial_number" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="return_date" Type="date" Nullable="false" />
+    <Property Name="manufacture" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="warranty_date" Type="date" Nullable="false" />
+    <Property Name="report" Type="nvarchar(max)" />
+    <Property Name="asset_id" Type="int" Nullable="false" />
+    <Property Name="asset_type_id" Type="int" Nullable="false" />
+    <Property Name="status_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="status">
+    <Key>
+      <PropertyRef Name="status_id" />
+    </Key>
+    <Property Name="status_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="status_name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="stock">
+    <Key>
+      <PropertyRef Name="stock_id" />
+    </Key>
+    <Property Name="stock_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="quantity" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="model" Type="varchar" MaxLength="20" />
+    <Property Name="order_id" Type="int" Nullable="false" />
+    <Property Name="status_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="technical_room">
+    <Key>
+      <PropertyRef Name="technical_id" />
+    </Key>
+    <Property Name="technical_id" Type="int" Nullable="false" />
+    <Property Name="upload_icf" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="status_id" Type="int" Nullable="false" />
+    <Property Name="asset_id" Type="int" Nullable="false" />
+    <Property Name="technician_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="technician">
+    <Key>
+      <PropertyRef Name="technician_id" />
+    </Key>
+    <Property Name="technician_id" Type="int" Nullable="false" />
+    <Property Name="technician_name" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="trial">
+    <Key>
+      <PropertyRef Name="order_stock" />
+    </Key>
+    <Property Name="order_stock" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="model1" Type="varchar" MaxLength="20" />
+    <Property Name="model2" Type="varchar" MaxLength="20" />
+    <Property Name="model3" Type="varchar" MaxLength="20" />
+    <Property Name="quantity1" Type="varchar" MaxLength="10" />
+    <Property Name="quantity2" Type="varchar" MaxLength="10" />
+    <Property Name="quantity3" Type="varchar" MaxLength="10" />
+    <Property Name="invoice_number" Type="varchar" MaxLength="15" />
+    <Property Name="date" Type="date" />
+    <Property Name="description" Type="varchar" MaxLength="70" />
+    <Property Name="eta" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="FK_asset_asset_type">
+    <End Role="asset" Type="Self.asset" Multiplicity="1" />
+    <End Role="asset1" Type="Self.asset" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="asset">
+        <PropertyRef Name="asset_id" />
+      </Principal>
+      <Dependent Role="asset1">
+        <PropertyRef Name="asset_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_asset_order">
+    <End Role="order" Type="Self.order" Multiplicity="1" />
+    <End Role="asset" Type="Self.asset" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order">
+        <PropertyRef Name="order_id" />
+      </Principal>
+      <Dependent Role="asset">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_asset_status">
+    <End Role="status" Type="Self.status" Multiplicity="1" />
+    <End Role="asset" Type="Self.asset" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="status">
+        <PropertyRef Name="status_id" />
+      </Principal>
+      <Dependent Role="asset">
+        <PropertyRef Name="status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_assign_asset">
+    <End Role="asset" Type="Self.asset" Multiplicity="1" />
+    <End Role="assign" Type="Self.assign" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="asset">
+        <PropertyRef Name="asset_id" />
+      </Principal>
+      <Dependent Role="assign">
+        <PropertyRef Name="asset_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_assign_status">
+    <End Role="status" Type="Self.status" Multiplicity="1" />
+    <End Role="assign" Type="Self.assign" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="status">
+        <PropertyRef Name="status_id" />
+      </Principal>
+      <Dependent Role="assign">
+        <PropertyRef Name="status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_assign_technician">
+    <End Role="technician" Type="Self.technician" Multiplicity="1" />
+    <End Role="assign" Type="Self.assign" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="technician">
+        <PropertyRef Name="technician_id" />
+      </Principal>
+      <Dependent Role="assign">
+        <PropertyRef Name="technician_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_item_order">
+    <End Role="order" Type="Self.order" Multiplicity="0..1" />
+    <End Role="item" Type="Self.item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order">
+        <PropertyRef Name="order_id" />
+      </Principal>
+      <Dependent Role="item">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_location_asset">
+    <End Role="asset" Type="Self.asset" Multiplicity="1" />
+    <End Role="location" Type="Self.location" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="asset">
+        <PropertyRef Name="asset_id" />
+      </Principal>
+      <Dependent Role="location">
+        <PropertyRef Name="asset_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_return_asset_asset">
+    <End Role="asset" Type="Self.asset" Multiplicity="1" />
+    <End Role="return_asset" Type="Self.return_asset" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="asset">
+        <PropertyRef Name="asset_id" />
+      </Principal>
+      <Dependent Role="return_asset">
+        <PropertyRef Name="asset_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_return_asset_asset_type">
+    <End Role="asset_type" Type="Self.asset_type" Multiplicity="1" />
+    <End Role="return_asset" Type="Self.return_asset" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="asset_type">
+        <PropertyRef Name="type_id" />
+      </Principal>
+      <Dependent Role="return_asset">
+        <PropertyRef Name="asset_type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_return_asset_status">
+    <End Role="status" Type="Self.status" Multiplicity="1" />
+    <End Role="return_asset" Type="Self.return_asset" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="status">
+        <PropertyRef Name="status_id" />
+      </Principal>
+      <Dependent Role="return_asset">
+        <PropertyRef Name="status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_stock_order">
+    <End Role="order" Type="Self.order" Multiplicity="1" />
+    <End Role="stock" Type="Self.stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order">
+        <PropertyRef Name="order_id" />
+      </Principal>
+      <Dependent Role="stock">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_stock_status">
+    <End Role="status" Type="Self.status" Multiplicity="1" />
+    <End Role="stock" Type="Self.stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="status">
+        <PropertyRef Name="status_id" />
+      </Principal>
+      <Dependent Role="stock">
+        <PropertyRef Name="status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_technical_room_asset">
+    <End Role="asset" Type="Self.asset" Multiplicity="1" />
+    <End Role="technical_room" Type="Self.technical_room" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="asset">
+        <PropertyRef Name="asset_id" />
+      </Principal>
+      <Dependent Role="technical_room">
+        <PropertyRef Name="asset_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_technical_room_status">
+    <End Role="status" Type="Self.status" Multiplicity="1" />
+    <End Role="technical_room" Type="Self.technical_room" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="status">
+        <PropertyRef Name="status_id" />
+      </Principal>
+      <Dependent Role="technical_room">
+        <PropertyRef Name="status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_technical_room_technician">
+    <End Role="technician" Type="Self.technician" Multiplicity="1" />
+    <End Role="technical_room" Type="Self.technical_room" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="technician">
+        <PropertyRef Name="technician_id" />
+      </Principal>
+      <Dependent Role="technical_room">
+        <PropertyRef Name="technician_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="itamModelStoreContainer">
+    <EntitySet Name="asset" EntityType="Self.asset" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="asset_type" EntityType="Self.asset_type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="assign" EntityType="Self.assign" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="item" EntityType="Self.item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="location" EntityType="Self.location" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="notification" EntityType="Self.notification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="order" EntityType="Self.order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="requester" EntityType="Self.requester" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="status" EntityType="Self.status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="stock" EntityType="Self.stock" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="technical_room" EntityType="Self.technical_room" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="technician" EntityType="Self.technician" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trial" EntityType="Self.trial" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="return_asset" EntityType="Self.return_asset" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [return_asset].[return_id] AS [return_id], 
+    [return_asset].[serial_number] AS [serial_number], 
+    [return_asset].[return_date] AS [return_date], 
+    [return_asset].[manufacture] AS [manufacture], 
+    [return_asset].[warranty_date] AS [warranty_date], 
+    [return_asset].[report] AS [report], 
+    [return_asset].[asset_id] AS [asset_id], 
+    [return_asset].[asset_type_id] AS [asset_type_id], 
+    [return_asset].[status_id] AS [status_id]
+    FROM [dbo].[return_asset] AS [return_asset]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_asset_asset_type" Association="Self.FK_asset_asset_type">
+      <End Role="asset" EntitySet="asset" />
+      <End Role="asset1" EntitySet="asset" />
+    </AssociationSet>
+    <AssociationSet Name="FK_asset_order" Association="Self.FK_asset_order">
+      <End Role="order" EntitySet="order" />
+      <End Role="asset" EntitySet="asset" />
+    </AssociationSet>
+    <AssociationSet Name="FK_asset_status" Association="Self.FK_asset_status">
+      <End Role="status" EntitySet="status" />
+      <End Role="asset" EntitySet="asset" />
+    </AssociationSet>
+    <AssociationSet Name="FK_assign_asset" Association="Self.FK_assign_asset">
+      <End Role="asset" EntitySet="asset" />
+      <End Role="assign" EntitySet="assign" />
+    </AssociationSet>
+    <AssociationSet Name="FK_assign_status" Association="Self.FK_assign_status">
+      <End Role="status" EntitySet="status" />
+      <End Role="assign" EntitySet="assign" />
+    </AssociationSet>
+    <AssociationSet Name="FK_assign_technician" Association="Self.FK_assign_technician">
+      <End Role="technician" EntitySet="technician" />
+      <End Role="assign" EntitySet="assign" />
+    </AssociationSet>
+    <AssociationSet Name="FK_item_order" Association="Self.FK_item_order">
+      <End Role="order" EntitySet="order" />
+      <End Role="item" EntitySet="item" />
+    </AssociationSet>
+    <AssociationSet Name="FK_location_asset" Association="Self.FK_location_asset">
+      <End Role="asset" EntitySet="asset" />
+      <End Role="location" EntitySet="location" />
+    </AssociationSet>
+    <AssociationSet Name="FK_return_asset_asset" Association="Self.FK_return_asset_asset">
+      <End Role="asset" EntitySet="asset" />
+      <End Role="return_asset" EntitySet="return_asset" />
+    </AssociationSet>
+    <AssociationSet Name="FK_return_asset_asset_type" Association="Self.FK_return_asset_asset_type">
+      <End Role="asset_type" EntitySet="asset_type" />
+      <End Role="return_asset" EntitySet="return_asset" />
+    </AssociationSet>
+    <AssociationSet Name="FK_return_asset_status" Association="Self.FK_return_asset_status">
+      <End Role="status" EntitySet="status" />
+      <End Role="return_asset" EntitySet="return_asset" />
+    </AssociationSet>
+    <AssociationSet Name="FK_stock_order" Association="Self.FK_stock_order">
+      <End Role="order" EntitySet="order" />
+      <End Role="stock" EntitySet="stock" />
+    </AssociationSet>
+    <AssociationSet Name="FK_stock_status" Association="Self.FK_stock_status">
+      <End Role="status" EntitySet="status" />
+      <End Role="stock" EntitySet="stock" />
+    </AssociationSet>
+    <AssociationSet Name="FK_technical_room_asset" Association="Self.FK_technical_room_asset">
+      <End Role="asset" EntitySet="asset" />
+      <End Role="technical_room" EntitySet="technical_room" />
+    </AssociationSet>
+    <AssociationSet Name="FK_technical_room_status" Association="Self.FK_technical_room_status">
+      <End Role="status" EntitySet="status" />
+      <End Role="technical_room" EntitySet="technical_room" />
+    </AssociationSet>
+    <AssociationSet Name="FK_technical_room_technician" Association="Self.FK_technical_room_technician">
+      <End Role="technician" EntitySet="technician" />
+      <End Role="technical_room" EntitySet="technical_room" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

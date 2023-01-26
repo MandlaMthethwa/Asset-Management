@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ee00d1119d4f4f75aa0aa504d138644a" Name="Diagram1">
+        <EntityTypeShape EntityType="itamModel.asset" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="itamModel.asset_type" Width="1.5" PointX="6" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="itamModel.assign" Width="1.5" PointX="8.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="itamModel.item" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="itamModel.location" Width="1.5" PointX="5.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="itamModel.notification" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="itamModel.order" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="itamModel.requester" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="itamModel.status" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="itamModel.stock" Width="1.5" PointX="6" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="itamModel.technical_room" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="itamModel.technician" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="itamModel.trial" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="itamModel.return_asset" Width="1.5" PointX="8.25" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="itamModel.FK_asset_asset_type" ManuallyRouted="false" />
+        <AssociationConnector Association="itamModel.FK_asset_order" ManuallyRouted="false" />
+        <AssociationConnector Association="itamModel.FK_asset_status" ManuallyRouted="false" />
+        <AssociationConnector Association="itamModel.FK_assign_asset" ManuallyRouted="false" />
+        <AssociationConnector Association="itamModel.FK_location_asset" ManuallyRouted="false" />
+        <AssociationConnector Association="itamModel.FK_return_asset_asset" ManuallyRouted="false" />
+        <AssociationConnector Association="itamModel.FK_technical_room_asset" ManuallyRouted="false" />
+        <AssociationConnector Association="itamModel.FK_return_asset_asset_type" ManuallyRouted="false" />
+        <AssociationConnector Association="itamModel.FK_assign_status" ManuallyRouted="false" />
+        <AssociationConnector Association="itamModel.FK_assign_technician" ManuallyRouted="false" />
+        <AssociationConnector Association="itamModel.FK_item_order" ManuallyRouted="false" />
+        <AssociationConnector Association="itamModel.FK_stock_order" ManuallyRouted="false" />
+        <AssociationConnector Association="itamModel.FK_return_asset_status" ManuallyRouted="false" />
+        <AssociationConnector Association="itamModel.FK_stock_status" ManuallyRouted="false" />
+        <AssociationConnector Association="itamModel.FK_technical_room_status" ManuallyRouted="false" />
+        <AssociationConnector Association="itamModel.FK_technical_room_technician" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

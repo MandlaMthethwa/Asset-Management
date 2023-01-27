@@ -171,6 +171,10 @@ html {
     scroll-behavior: smooth;
     scroll-padding-top: 6rem;
 }
+.viewBag{
+    font-size:50%;
+    color:white;
+}
 
 
 
@@ -225,7 +229,7 @@ h1 {
     letter-spacing: 1px;
 }
 
-h2 {
+h2,h3 {
     font-size: 180%;
     word-spacing: 2px;
     text-align: center;

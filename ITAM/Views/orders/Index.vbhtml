@@ -5,7 +5,6 @@ Layout = "~/Views/Shared/_Layout.vbhtml"
 End Code
 
 <h2>Index</h2>
-
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -44,7 +43,7 @@ End Code
         
         <td>
             @Html.ActionLink("Edit", "Edit", New With {.id = item.order_id}) |
-            @Html.ActionLink("Details", "Details", New With {.id = item.order_id}) |
+            @Html.ActionLink("Details", "Index", "Items", New With {.id = item.order_id}) |
             @Html.ActionLink("Delete", "Delete", New With {.id = item.order_id})
         </td>
     </tr>

@@ -9,12 +9,18 @@
 
 Imports System
 Imports System.Collections.Generic
+Imports System.ComponentModel
 
 Partial Public Class item
+    <DisplayName("Item ID")>
     Public Property item_id As Integer
+    <DisplayName("Item Name")>
     Public Property item_name As String
+    <DisplayName("Description")>
     Public Property description As String
+    <DisplayName("Quantity")>
     Public Property quantity As Integer
+    <DisplayName("Manufacturer")>
     Public Property manufacture As String
     Public Property order_id As Nullable(Of Integer)
 

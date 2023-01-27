@@ -4,61 +4,57 @@
     'service = "~/Views/items/Create.vbhtml"
 End Code
 
-@*<h2>Add</h2>*@
+<h2>Add a new Order</h2>
 
-@Using (Html.BeginForm()) 
+@Using (Html.BeginForm())
     @Html.AntiForgeryToken()
 
 
     @<div class="form-horizontal">
-    <h4>order</h4>
-    <hr />
-    @Html.ValidationSummary(True, "", New With {.class = "text-danger"})
-    <div class="form-group">
-        @Html.LabelFor(Function(model) model.order_number, htmlAttributes:=New With {.class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(Function(model) model.order_number, New With {.htmlAttributes = New With {.class = "form-control"}})
-            @Html.ValidationMessageFor(Function(model) model.order_number, "", New With {.class = "text-danger"})
+        <h3></h3>
+        <hr />
+        @Html.ValidationSummary(True, "", New With {.class = "text-danger"})
+        <div class="form-group">
+            @Html.LabelFor(Function(model) model.order_number, htmlAttributes:=New With {.class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(Function(model) model.order_number, New With {.htmlAttributes = New With {.class = "form-control"}})
+                @Html.ValidationMessageFor(Function(model) model.order_number, "", New With {.class = "text-danger"})
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(Function(model) model.order_date, htmlAttributes:=New With {.class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(Function(model) model.order_date, New With {.htmlAttributes = New With {.class = "form-control"}})
-            @Html.ValidationMessageFor(Function(model) model.order_date, "", New With {.class = "text-danger"})
+        <div>
+            @Html.HiddenFor(Function(model) model.order_date, New With {.Value = DateTime.Now.ToString("yyyy-MM-dd")})
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(Function(model) model.eta, htmlAttributes:=New With {.class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(Function(model) model.eta, New With {.htmlAttributes = New With {.class = "form-control"}})
-            @Html.ValidationMessageFor(Function(model) model.eta, "", New With {.class = "text-danger"})
+        <div class="form-group">
+            @Html.LabelFor(Function(model) model.eta, htmlAttributes:=New With {.class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(Function(model) model.eta, New With {.htmlAttributes = New With {.class = "form-control"}})
+                @Html.ValidationMessageFor(Function(model) model.eta, "", New With {.class = "text-danger"})
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(Function(model) model.invoice_number, htmlAttributes:=New With {.class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(Function(model) model.invoice_number, New With {.htmlAttributes = New With {.class = "form-control"}})
-            @Html.ValidationMessageFor(Function(model) model.invoice_number, "", New With {.class = "text-danger"})
+        <div class="form-group">
+            @Html.LabelFor(Function(model) model.invoice_number, htmlAttributes:=New With {.class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(Function(model) model.invoice_number, New With {.htmlAttributes = New With {.class = "form-control"}})
+                @Html.ValidationMessageFor(Function(model) model.invoice_number, "", New With {.class = "text-danger"})
+            </div>
         </div>
-    </div>
 
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
         </div>
     </div>
-</div>
 End Using
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-@Section Scripts 
+@Section Scripts
     @Scripts.Render("~/bundles/jqueryval")
 End Section

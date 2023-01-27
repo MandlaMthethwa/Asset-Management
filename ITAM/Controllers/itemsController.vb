@@ -16,17 +16,10 @@ Namespace Controllers
 
         ' GET: items
         Function Index() As ActionResult
-            Dim order_id As Integer = Nothing
-            Dim order = db.orders.Where(Function(o) o.order_id = order_id).FirstOrDefault()
-            Dim order_id_items As Integer? = Nothing
-            Dim item = db.items.Where(Function(i) i.order_id = order_id_items).FirstOrDefault()
-
 
             Dim items = db.items.Include(Function(r) r.order)
-            If order Is item Then
-                Return View(db.items.ToList())
-            End If
-
+            'Dim items = db.items.Where(Function(f) f.order_id = OrderId)
+            Return View(items.ToList())
         End Function
 
         ' GET: items/Details/5
@@ -42,9 +35,11 @@ Namespace Controllers
         End Function
 
         ' GET: items/Create
-        Function Create() As ActionResult
-            
-            ViewBag.order_id = New SelectList(db.orders, "order_id", "order_number")
+        Function Create(ByVal OrderId As Integer?) As ActionResult
+
+            'ViewBag.order_id = New SelectList(db.orders, "order_id", "order_number")
+            ViewBag.CurrentOrder = db.orders.Where(Function(a) a.order_id = OrderId).FirstOrDefault()
+            ViewBag.OrderID = OrderId
 
             Return View()
         End Function
@@ -56,14 +51,14 @@ Namespace Controllers
         <HttpPost()>
         <ValidateAntiForgeryToken()>
         Function Create(<Bind(Include:="item_id,item_name,description,quantity,manufacture,order_id")> ByVal item As item) As ActionResult
+            ViewBag.OrderId = item.order_id
+
             If ModelState.IsValid Then
                 db.items.Add(item)
                 db.SaveChanges()
-                Return RedirectToAction("Create")
+            Return RedirectToAction("Create", "items", New With {.OrderId = item.order_id})
             End If
-            ViewBag.order = New SelectList(db.orders, "order_id", "order_number", item.order_id)
-
-            Return View(item)
+            Return View("Create")
         End Function
 
         ' GET: items/Edit/5

@@ -13,6 +13,7 @@ Imports System.ComponentModel
 Imports System.ComponentModel.DataAnnotations
 
 Partial Public Class order
+    <DisplayName("Order ID")>
     Public Property order_id As Integer
     <DisplayName("Order Number")>
     Public Property order_number As String

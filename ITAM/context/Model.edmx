@@ -4,8 +4,15 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="itamModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="asset">
+    <Schema Namespace="itamModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="asset_type">
+          <Key>
+            <PropertyRef Name="type_id" />
+          </Key>
+          <Property Name="type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="asset_type1" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="assets">
           <Key>
             <PropertyRef Name="asset_id" />
           </Key>
@@ -15,19 +22,12 @@
           <Property Name="manufacture" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="serial_number" Type="varchar" MaxLength="20" />
           <Property Name="description" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="warranty_date" Type="date" Nullable="false" />
+          <Property Name="warranty_date" Type="datetime" Nullable="false" />
           <Property Name="status_id" Type="int" Nullable="false" />
           <Property Name="order_id" Type="int" Nullable="false" />
           <Property Name="asset_type_id" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="asset_type">
-          <Key>
-            <PropertyRef Name="type_id" />
-          </Key>
-          <Property Name="type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="asset_type" Type="varchar" MaxLength="20" Nullable="false" />
-        </EntityType>
-        <EntityType Name="assign">
+        <EntityType Name="assigns">
           <Key>
             <PropertyRef Name="assign_id" />
           </Key>
@@ -39,7 +39,7 @@
           <Property Name="status_id" Type="int" Nullable="false" />
           <Property Name="technician_id" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="item">
+        <EntityType Name="items">
           <Key>
             <PropertyRef Name="item_id" />
           </Key>
@@ -50,16 +50,16 @@
           <Property Name="manufacture" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="order_id" Type="int" />
         </EntityType>
-        <EntityType Name="location">
+        <EntityType Name="locations">
           <Key>
             <PropertyRef Name="location_id" />
           </Key>
           <Property Name="location_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="serial_number" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="location" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="location1" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="asset_id" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="notification">
+        <EntityType Name="notifications">
           <Key>
             <PropertyRef Name="notify_id" />
           </Key>
@@ -67,17 +67,17 @@
           <Property Name="message" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="requester_id" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="order">
+        <EntityType Name="orders">
           <Key>
             <PropertyRef Name="order_id" />
           </Key>
           <Property Name="order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="order_number" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="order_date" Type="date" />
-          <Property Name="eta" Type="date" />
+          <Property Name="order_date" Type="datetime" />
+          <Property Name="eta" Type="datetime" />
           <Property Name="invoice_number" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="requester">
+        <EntityType Name="requesters">
           <Key>
             <PropertyRef Name="requester_id" />
           </Key>
@@ -86,8 +86,6 @@
           <Property Name="requester_email_address" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="requester_contact_number" Type="varchar" MaxLength="12" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'itam.dbo.return_asset' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="return_asset">
           <Key>
             <PropertyRef Name="return_id" />
@@ -101,9 +99,9 @@ warning 6002: The table/view 'itam.dbo.return_asset' does not have a primary key
           </Key>
           <Property Name="return_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="serial_number" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="return_date" Type="date" Nullable="false" />
+          <Property Name="return_date" Type="datetime" Nullable="false" />
           <Property Name="manufacture" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="warranty_date" Type="date" Nullable="false" />
+          <Property Name="warranty_date" Type="datetime" Nullable="false" />
           <Property Name="report" Type="nvarchar(max)" />
           <Property Name="asset_id" Type="int" Nullable="false" />
           <Property Name="asset_type_id" Type="int" Nullable="false" />
@@ -117,7 +115,7 @@ warning 6002: The table/view 'itam.dbo.return_asset' does not have a primary key
           <Property Name="status_name" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="description" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
-        <EntityType Name="stock">
+        <EntityType Name="stocks">
           <Key>
             <PropertyRef Name="stock_id" />
           </Key>
@@ -137,14 +135,14 @@ warning 6002: The table/view 'itam.dbo.return_asset' does not have a primary key
           <Property Name="asset_id" Type="int" Nullable="false" />
           <Property Name="technician_id" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="technician">
+        <EntityType Name="technicians">
           <Key>
             <PropertyRef Name="technician_id" />
           </Key>
           <Property Name="technician_id" Type="int" Nullable="false" />
           <Property Name="technician_name" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <EntityType Name="trial">
+        <EntityType Name="trials">
           <Key>
             <PropertyRef Name="order_stock" />
           </Key>
@@ -156,111 +154,111 @@ warning 6002: The table/view 'itam.dbo.return_asset' does not have a primary key
           <Property Name="quantity2" Type="varchar" MaxLength="10" />
           <Property Name="quantity3" Type="varchar" MaxLength="10" />
           <Property Name="invoice_number" Type="varchar" MaxLength="15" />
-          <Property Name="date" Type="date" />
+          <Property Name="date" Type="datetime" />
           <Property Name="description" Type="varchar" MaxLength="70" />
           <Property Name="eta" Type="varchar" MaxLength="20" />
         </EntityType>
         <Association Name="FK_asset_asset_type">
-          <End Role="asset" Type="Self.asset" Multiplicity="1" />
-          <End Role="asset1" Type="Self.asset" Multiplicity="0..1" />
+          <End Role="assets" Type="Self.assets" Multiplicity="1" />
+          <End Role="assets1" Type="Self.assets" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="asset">
+            <Principal Role="assets">
               <PropertyRef Name="asset_id" />
             </Principal>
-            <Dependent Role="asset1">
+            <Dependent Role="assets1">
               <PropertyRef Name="asset_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_asset_order">
-          <End Role="order" Type="Self.order" Multiplicity="1" />
-          <End Role="asset" Type="Self.asset" Multiplicity="*" />
+          <End Role="orders" Type="Self.orders" Multiplicity="1" />
+          <End Role="assets" Type="Self.assets" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="order">
+            <Principal Role="orders">
               <PropertyRef Name="order_id" />
             </Principal>
-            <Dependent Role="asset">
+            <Dependent Role="assets">
               <PropertyRef Name="order_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_asset_status">
           <End Role="status" Type="Self.status" Multiplicity="1" />
-          <End Role="asset" Type="Self.asset" Multiplicity="*" />
+          <End Role="assets" Type="Self.assets" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="status">
               <PropertyRef Name="status_id" />
             </Principal>
-            <Dependent Role="asset">
+            <Dependent Role="assets">
               <PropertyRef Name="status_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_assign_asset">
-          <End Role="asset" Type="Self.asset" Multiplicity="1" />
-          <End Role="assign" Type="Self.assign" Multiplicity="*" />
+          <End Role="assets" Type="Self.assets" Multiplicity="1" />
+          <End Role="assigns" Type="Self.assigns" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="asset">
+            <Principal Role="assets">
               <PropertyRef Name="asset_id" />
             </Principal>
-            <Dependent Role="assign">
+            <Dependent Role="assigns">
               <PropertyRef Name="asset_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_assign_status">
           <End Role="status" Type="Self.status" Multiplicity="1" />
-          <End Role="assign" Type="Self.assign" Multiplicity="*" />
+          <End Role="assigns" Type="Self.assigns" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="status">
               <PropertyRef Name="status_id" />
             </Principal>
-            <Dependent Role="assign">
+            <Dependent Role="assigns">
               <PropertyRef Name="status_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_assign_technician">
-          <End Role="technician" Type="Self.technician" Multiplicity="1" />
-          <End Role="assign" Type="Self.assign" Multiplicity="*" />
+          <End Role="technicians" Type="Self.technicians" Multiplicity="1" />
+          <End Role="assigns" Type="Self.assigns" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="technician">
+            <Principal Role="technicians">
               <PropertyRef Name="technician_id" />
             </Principal>
-            <Dependent Role="assign">
+            <Dependent Role="assigns">
               <PropertyRef Name="technician_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_item_order">
-          <End Role="order" Type="Self.order" Multiplicity="0..1" />
-          <End Role="item" Type="Self.item" Multiplicity="*" />
+          <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
+          <End Role="items" Type="Self.items" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="order">
+            <Principal Role="orders">
               <PropertyRef Name="order_id" />
             </Principal>
-            <Dependent Role="item">
+            <Dependent Role="items">
               <PropertyRef Name="order_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_location_asset">
-          <End Role="asset" Type="Self.asset" Multiplicity="1" />
-          <End Role="location" Type="Self.location" Multiplicity="*" />
+          <End Role="assets" Type="Self.assets" Multiplicity="1" />
+          <End Role="locations" Type="Self.locations" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="asset">
+            <Principal Role="assets">
               <PropertyRef Name="asset_id" />
             </Principal>
-            <Dependent Role="location">
+            <Dependent Role="locations">
               <PropertyRef Name="asset_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_return_asset_asset">
-          <End Role="asset" Type="Self.asset" Multiplicity="1" />
+          <End Role="assets" Type="Self.assets" Multiplicity="1" />
           <End Role="return_asset" Type="Self.return_asset" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="asset">
+            <Principal Role="assets">
               <PropertyRef Name="asset_id" />
             </Principal>
             <Dependent Role="return_asset">
@@ -293,34 +291,34 @@ warning 6002: The table/view 'itam.dbo.return_asset' does not have a primary key
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_stock_order">
-          <End Role="order" Type="Self.order" Multiplicity="1" />
-          <End Role="stock" Type="Self.stock" Multiplicity="*" />
+          <End Role="orders" Type="Self.orders" Multiplicity="1" />
+          <End Role="stocks" Type="Self.stocks" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="order">
+            <Principal Role="orders">
               <PropertyRef Name="order_id" />
             </Principal>
-            <Dependent Role="stock">
+            <Dependent Role="stocks">
               <PropertyRef Name="order_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_stock_status">
           <End Role="status" Type="Self.status" Multiplicity="1" />
-          <End Role="stock" Type="Self.stock" Multiplicity="*" />
+          <End Role="stocks" Type="Self.stocks" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="status">
               <PropertyRef Name="status_id" />
             </Principal>
-            <Dependent Role="stock">
+            <Dependent Role="stocks">
               <PropertyRef Name="status_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_technical_room_asset">
-          <End Role="asset" Type="Self.asset" Multiplicity="1" />
+          <End Role="assets" Type="Self.assets" Multiplicity="1" />
           <End Role="technical_room" Type="Self.technical_room" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="asset">
+            <Principal Role="assets">
               <PropertyRef Name="asset_id" />
             </Principal>
             <Dependent Role="technical_room">
@@ -341,10 +339,10 @@ warning 6002: The table/view 'itam.dbo.return_asset' does not have a primary key
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_technical_room_technician">
-          <End Role="technician" Type="Self.technician" Multiplicity="1" />
+          <End Role="technicians" Type="Self.technicians" Multiplicity="1" />
           <End Role="technical_room" Type="Self.technical_room" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="technician">
+            <Principal Role="technicians">
               <PropertyRef Name="technician_id" />
             </Principal>
             <Dependent Role="technical_room">
@@ -353,66 +351,54 @@ warning 6002: The table/view 'itam.dbo.return_asset' does not have a primary key
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="itamModelStoreContainer">
-          <EntitySet Name="asset" EntityType="Self.asset" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="asset_type" EntityType="Self.asset_type" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="assign" EntityType="Self.assign" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="item" EntityType="Self.item" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="location" EntityType="Self.location" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="notification" EntityType="Self.notification" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="order" EntityType="Self.order" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="requester" EntityType="Self.requester" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="assets" EntityType="Self.assets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="assigns" EntityType="Self.assigns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="items" EntityType="Self.items" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="locations" EntityType="Self.locations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="notifications" EntityType="Self.notifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="requesters" EntityType="Self.requesters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="return_asset" EntityType="Self.return_asset" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="status" EntityType="Self.status" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="stock" EntityType="Self.stock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="stocks" EntityType="Self.stocks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="technical_room" EntityType="Self.technical_room" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="technician" EntityType="Self.technician" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="trial" EntityType="Self.trial" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="return_asset" EntityType="Self.return_asset" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [return_asset].[return_id] AS [return_id], 
-    [return_asset].[serial_number] AS [serial_number], 
-    [return_asset].[return_date] AS [return_date], 
-    [return_asset].[manufacture] AS [manufacture], 
-    [return_asset].[warranty_date] AS [warranty_date], 
-    [return_asset].[report] AS [report], 
-    [return_asset].[asset_id] AS [asset_id], 
-    [return_asset].[asset_type_id] AS [asset_type_id], 
-    [return_asset].[status_id] AS [status_id]
-    FROM [dbo].[return_asset] AS [return_asset]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="technicians" EntityType="Self.technicians" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="trials" EntityType="Self.trials" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_asset_asset_type" Association="Self.FK_asset_asset_type">
-            <End Role="asset" EntitySet="asset" />
-            <End Role="asset1" EntitySet="asset" />
+            <End Role="assets" EntitySet="assets" />
+            <End Role="assets1" EntitySet="assets" />
           </AssociationSet>
           <AssociationSet Name="FK_asset_order" Association="Self.FK_asset_order">
-            <End Role="order" EntitySet="order" />
-            <End Role="asset" EntitySet="asset" />
+            <End Role="orders" EntitySet="orders" />
+            <End Role="assets" EntitySet="assets" />
           </AssociationSet>
           <AssociationSet Name="FK_asset_status" Association="Self.FK_asset_status">
             <End Role="status" EntitySet="status" />
-            <End Role="asset" EntitySet="asset" />
+            <End Role="assets" EntitySet="assets" />
           </AssociationSet>
           <AssociationSet Name="FK_assign_asset" Association="Self.FK_assign_asset">
-            <End Role="asset" EntitySet="asset" />
-            <End Role="assign" EntitySet="assign" />
+            <End Role="assets" EntitySet="assets" />
+            <End Role="assigns" EntitySet="assigns" />
           </AssociationSet>
           <AssociationSet Name="FK_assign_status" Association="Self.FK_assign_status">
             <End Role="status" EntitySet="status" />
-            <End Role="assign" EntitySet="assign" />
+            <End Role="assigns" EntitySet="assigns" />
           </AssociationSet>
           <AssociationSet Name="FK_assign_technician" Association="Self.FK_assign_technician">
-            <End Role="technician" EntitySet="technician" />
-            <End Role="assign" EntitySet="assign" />
+            <End Role="technicians" EntitySet="technicians" />
+            <End Role="assigns" EntitySet="assigns" />
           </AssociationSet>
           <AssociationSet Name="FK_item_order" Association="Self.FK_item_order">
-            <End Role="order" EntitySet="order" />
-            <End Role="item" EntitySet="item" />
+            <End Role="orders" EntitySet="orders" />
+            <End Role="items" EntitySet="items" />
           </AssociationSet>
           <AssociationSet Name="FK_location_asset" Association="Self.FK_location_asset">
-            <End Role="asset" EntitySet="asset" />
-            <End Role="location" EntitySet="location" />
+            <End Role="assets" EntitySet="assets" />
+            <End Role="locations" EntitySet="locations" />
           </AssociationSet>
           <AssociationSet Name="FK_return_asset_asset" Association="Self.FK_return_asset_asset">
-            <End Role="asset" EntitySet="asset" />
+            <End Role="assets" EntitySet="assets" />
             <End Role="return_asset" EntitySet="return_asset" />
           </AssociationSet>
           <AssociationSet Name="FK_return_asset_asset_type" Association="Self.FK_return_asset_asset_type">
@@ -424,15 +410,15 @@ warning 6002: The table/view 'itam.dbo.return_asset' does not have a primary key
             <End Role="return_asset" EntitySet="return_asset" />
           </AssociationSet>
           <AssociationSet Name="FK_stock_order" Association="Self.FK_stock_order">
-            <End Role="order" EntitySet="order" />
-            <End Role="stock" EntitySet="stock" />
+            <End Role="orders" EntitySet="orders" />
+            <End Role="stocks" EntitySet="stocks" />
           </AssociationSet>
           <AssociationSet Name="FK_stock_status" Association="Self.FK_stock_status">
             <End Role="status" EntitySet="status" />
-            <End Role="stock" EntitySet="stock" />
+            <End Role="stocks" EntitySet="stocks" />
           </AssociationSet>
           <AssociationSet Name="FK_technical_room_asset" Association="Self.FK_technical_room_asset">
-            <End Role="asset" EntitySet="asset" />
+            <End Role="assets" EntitySet="assets" />
             <End Role="technical_room" EntitySet="technical_room" />
           </AssociationSet>
           <AssociationSet Name="FK_technical_room_status" Association="Self.FK_technical_room_status">
@@ -440,12 +426,11 @@ warning 6002: The table/view 'itam.dbo.return_asset' does not have a primary key
             <End Role="technical_room" EntitySet="technical_room" />
           </AssociationSet>
           <AssociationSet Name="FK_technical_room_technician" Association="Self.FK_technical_room_technician">
-            <End Role="technician" EntitySet="technician" />
+            <End Role="technicians" EntitySet="technicians" />
             <End Role="technical_room" EntitySet="technical_room" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="itamModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -459,7 +444,7 @@ warning 6002: The table/view 'itam.dbo.return_asset' does not have a primary key
           <Property Name="manufacture" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="serial_number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="warranty_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="warranty_date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="status_id" Type="Int32" Nullable="false" />
           <Property Name="order_id" Type="Int32" Nullable="false" />
           <Property Name="asset_type_id" Type="Int32" Nullable="false" />
@@ -531,8 +516,8 @@ warning 6002: The table/view 'itam.dbo.return_asset' does not have a primary key
           </Key>
           <Property Name="order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="order_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="order_date" Type="DateTime" Precision="0" />
-          <Property Name="eta" Type="DateTime" Precision="0" />
+          <Property Name="order_date" Type="DateTime" Precision="3" />
+          <Property Name="eta" Type="DateTime" Precision="3" />
           <Property Name="invoice_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="assets" Relationship="Self.FK_asset_order" FromRole="order" ToRole="asset" />
           <NavigationProperty Name="items" Relationship="Self.FK_item_order" FromRole="order" ToRole="item" />
@@ -606,7 +591,7 @@ warning 6002: The table/view 'itam.dbo.return_asset' does not have a primary key
           <Property Name="quantity2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="quantity3" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="invoice_number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="date" Type="DateTime" Precision="3" />
           <Property Name="description" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
           <Property Name="eta" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
@@ -623,9 +608,9 @@ warning 6002: The table/view 'itam.dbo.return_asset' does not have a primary key
           </Key>
           <Property Name="return_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="serial_number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="return_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="return_date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="manufacture" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="warranty_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="warranty_date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="report" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="asset_id" Type="Int32" Nullable="false" />
           <Property Name="asset_type_id" Type="Int32" Nullable="false" />
@@ -910,171 +895,170 @@ warning 6002: The table/view 'itam.dbo.return_asset' does not have a primary key
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="itamModelStoreContainer" CdmEntityContainer="itamDB">
-          <EntitySetMapping Name="assets">
-            <EntityTypeMapping TypeName="itamModel.asset">
-              <MappingFragment StoreEntitySet="asset">
-                <ScalarProperty Name="asset_id" ColumnName="asset_id" />
-                <ScalarProperty Name="model" ColumnName="model" />
-                <ScalarProperty Name="po_number" ColumnName="po_number" />
-                <ScalarProperty Name="manufacture" ColumnName="manufacture" />
-                <ScalarProperty Name="serial_number" ColumnName="serial_number" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="warranty_date" ColumnName="warranty_date" />
-                <ScalarProperty Name="status_id" ColumnName="status_id" />
-                <ScalarProperty Name="order_id" ColumnName="order_id" />
-                <ScalarProperty Name="asset_type_id" ColumnName="asset_type_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="asset_type">
-            <EntityTypeMapping TypeName="itamModel.asset_type">
-              <MappingFragment StoreEntitySet="asset_type">
-                <ScalarProperty Name="type_id" ColumnName="type_id" />
-                <ScalarProperty Name="asset_type1" ColumnName="asset_type" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="assigns">
-            <EntityTypeMapping TypeName="itamModel.assign">
-              <MappingFragment StoreEntitySet="assign">
-                <ScalarProperty Name="assign_id" ColumnName="assign_id" />
-                <ScalarProperty Name="assign_name" ColumnName="assign_name" />
-                <ScalarProperty Name="department" ColumnName="department" />
-                <ScalarProperty Name="icf" ColumnName="icf" />
-                <ScalarProperty Name="asset_id" ColumnName="asset_id" />
-                <ScalarProperty Name="status_id" ColumnName="status_id" />
-                <ScalarProperty Name="technician_id" ColumnName="technician_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="items">
-            <EntityTypeMapping TypeName="itamModel.item">
-              <MappingFragment StoreEntitySet="item">
-                <ScalarProperty Name="item_id" ColumnName="item_id" />
-                <ScalarProperty Name="item_name" ColumnName="item_name" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="quantity" ColumnName="quantity" />
-                <ScalarProperty Name="manufacture" ColumnName="manufacture" />
-                <ScalarProperty Name="order_id" ColumnName="order_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="locations">
-            <EntityTypeMapping TypeName="itamModel.location">
-              <MappingFragment StoreEntitySet="location">
-                <ScalarProperty Name="location_id" ColumnName="location_id" />
-                <ScalarProperty Name="serial_number" ColumnName="serial_number" />
-                <ScalarProperty Name="location1" ColumnName="location" />
-                <ScalarProperty Name="asset_id" ColumnName="asset_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="notifications">
-            <EntityTypeMapping TypeName="itamModel.notification">
-              <MappingFragment StoreEntitySet="notification">
-                <ScalarProperty Name="notify_id" ColumnName="notify_id" />
-                <ScalarProperty Name="message" ColumnName="message" />
-                <ScalarProperty Name="requester_id" ColumnName="requester_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="orders">
-            <EntityTypeMapping TypeName="itamModel.order">
-              <MappingFragment StoreEntitySet="order">
-                <ScalarProperty Name="order_id" ColumnName="order_id" />
-                <ScalarProperty Name="order_number" ColumnName="order_number" />
-                <ScalarProperty Name="order_date" ColumnName="order_date" />
-                <ScalarProperty Name="eta" ColumnName="eta" />
-                <ScalarProperty Name="invoice_number" ColumnName="invoice_number" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="requesters">
-            <EntityTypeMapping TypeName="itamModel.requester">
-              <MappingFragment StoreEntitySet="requester">
-                <ScalarProperty Name="requester_id" ColumnName="requester_id" />
-                <ScalarProperty Name="requester_name" ColumnName="requester_name" />
-                <ScalarProperty Name="requester_email_address" ColumnName="requester_email_address" />
-                <ScalarProperty Name="requester_contact_number" ColumnName="requester_contact_number" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="status">
-            <EntityTypeMapping TypeName="itamModel.status">
-              <MappingFragment StoreEntitySet="status">
-                <ScalarProperty Name="status_id" ColumnName="status_id" />
-                <ScalarProperty Name="status_name" ColumnName="status_name" />
-                <ScalarProperty Name="description" ColumnName="description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="stocks">
-            <EntityTypeMapping TypeName="itamModel.stock">
-              <MappingFragment StoreEntitySet="stock">
-                <ScalarProperty Name="stock_id" ColumnName="stock_id" />
-                <ScalarProperty Name="quantity" ColumnName="quantity" />
-                <ScalarProperty Name="model" ColumnName="model" />
-                <ScalarProperty Name="order_id" ColumnName="order_id" />
-                <ScalarProperty Name="status_id" ColumnName="status_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="technical_room">
-            <EntityTypeMapping TypeName="itamModel.technical_room">
-              <MappingFragment StoreEntitySet="technical_room">
-                <ScalarProperty Name="technical_id" ColumnName="technical_id" />
-                <ScalarProperty Name="upload_icf" ColumnName="upload_icf" />
-                <ScalarProperty Name="status_id" ColumnName="status_id" />
-                <ScalarProperty Name="asset_id" ColumnName="asset_id" />
-                <ScalarProperty Name="technician_id" ColumnName="technician_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="technicians">
-            <EntityTypeMapping TypeName="itamModel.technician">
-              <MappingFragment StoreEntitySet="technician">
-                <ScalarProperty Name="technician_id" ColumnName="technician_id" />
-                <ScalarProperty Name="technician_name" ColumnName="technician_name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="trials">
-            <EntityTypeMapping TypeName="itamModel.trial">
-              <MappingFragment StoreEntitySet="trial">
-                <ScalarProperty Name="order_stock" ColumnName="order_stock" />
-                <ScalarProperty Name="model1" ColumnName="model1" />
-                <ScalarProperty Name="model2" ColumnName="model2" />
-                <ScalarProperty Name="model3" ColumnName="model3" />
-                <ScalarProperty Name="quantity1" ColumnName="quantity1" />
-                <ScalarProperty Name="quantity2" ColumnName="quantity2" />
-                <ScalarProperty Name="quantity3" ColumnName="quantity3" />
-                <ScalarProperty Name="invoice_number" ColumnName="invoice_number" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="eta" ColumnName="eta" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="return_asset">
-            <EntityTypeMapping TypeName="itamModel.return_asset">
-              <MappingFragment StoreEntitySet="return_asset">
-                <ScalarProperty Name="return_id" ColumnName="return_id" />
-                <ScalarProperty Name="serial_number" ColumnName="serial_number" />
-                <ScalarProperty Name="return_date" ColumnName="return_date" />
-                <ScalarProperty Name="manufacture" ColumnName="manufacture" />
-                <ScalarProperty Name="warranty_date" ColumnName="warranty_date" />
-                <ScalarProperty Name="report" ColumnName="report" />
-                <ScalarProperty Name="asset_id" ColumnName="asset_id" />
-                <ScalarProperty Name="asset_type_id" ColumnName="asset_type_id" />
-                <ScalarProperty Name="status_id" ColumnName="status_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="itamModelStoreContainer" CdmEntityContainer="itamDB">
+    <EntitySetMapping Name="assets">
+      <EntityTypeMapping TypeName="IsTypeOf(itamModel.asset)">
+        <MappingFragment StoreEntitySet="assets">
+          <ScalarProperty Name="asset_id" ColumnName="asset_id" />
+          <ScalarProperty Name="model" ColumnName="model" />
+          <ScalarProperty Name="po_number" ColumnName="po_number" />
+          <ScalarProperty Name="manufacture" ColumnName="manufacture" />
+          <ScalarProperty Name="serial_number" ColumnName="serial_number" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="warranty_date" ColumnName="warranty_date" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="asset_type_id" ColumnName="asset_type_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="asset_type">
+      <EntityTypeMapping TypeName="IsTypeOf(itamModel.asset_type)">
+        <MappingFragment StoreEntitySet="asset_type">
+          <ScalarProperty Name="type_id" ColumnName="type_id" />
+          <ScalarProperty Name="asset_type1" ColumnName="asset_type1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="assigns">
+      <EntityTypeMapping TypeName="IsTypeOf(itamModel.assign)">
+        <MappingFragment StoreEntitySet="assigns">
+          <ScalarProperty Name="assign_id" ColumnName="assign_id" />
+          <ScalarProperty Name="assign_name" ColumnName="assign_name" />
+          <ScalarProperty Name="department" ColumnName="department" />
+          <ScalarProperty Name="icf" ColumnName="icf" />
+          <ScalarProperty Name="asset_id" ColumnName="asset_id" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="technician_id" ColumnName="technician_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="items">
+      <EntityTypeMapping TypeName="IsTypeOf(itamModel.item)">
+        <MappingFragment StoreEntitySet="items">
+          <ScalarProperty Name="item_id" ColumnName="item_id" />
+          <ScalarProperty Name="item_name" ColumnName="item_name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="manufacture" ColumnName="manufacture" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="locations">
+      <EntityTypeMapping TypeName="IsTypeOf(itamModel.location)">
+        <MappingFragment StoreEntitySet="locations">
+          <ScalarProperty Name="location_id" ColumnName="location_id" />
+          <ScalarProperty Name="serial_number" ColumnName="serial_number" />
+          <ScalarProperty Name="location1" ColumnName="location1" />
+          <ScalarProperty Name="asset_id" ColumnName="asset_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="notifications">
+      <EntityTypeMapping TypeName="IsTypeOf(itamModel.notification)">
+        <MappingFragment StoreEntitySet="notifications">
+          <ScalarProperty Name="notify_id" ColumnName="notify_id" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="requester_id" ColumnName="requester_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orders">
+      <EntityTypeMapping TypeName="IsTypeOf(itamModel.order)">
+        <MappingFragment StoreEntitySet="orders">
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="order_number" ColumnName="order_number" />
+          <ScalarProperty Name="order_date" ColumnName="order_date" />
+          <ScalarProperty Name="eta" ColumnName="eta" />
+          <ScalarProperty Name="invoice_number" ColumnName="invoice_number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="requesters">
+      <EntityTypeMapping TypeName="IsTypeOf(itamModel.requester)">
+        <MappingFragment StoreEntitySet="requesters">
+          <ScalarProperty Name="requester_id" ColumnName="requester_id" />
+          <ScalarProperty Name="requester_name" ColumnName="requester_name" />
+          <ScalarProperty Name="requester_email_address" ColumnName="requester_email_address" />
+          <ScalarProperty Name="requester_contact_number" ColumnName="requester_contact_number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="status">
+      <EntityTypeMapping TypeName="IsTypeOf(itamModel.status)">
+        <MappingFragment StoreEntitySet="status">
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="status_name" ColumnName="status_name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stocks">
+      <EntityTypeMapping TypeName="IsTypeOf(itamModel.stock)">
+        <MappingFragment StoreEntitySet="stocks">
+          <ScalarProperty Name="stock_id" ColumnName="stock_id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="model" ColumnName="model" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="technical_room">
+      <EntityTypeMapping TypeName="IsTypeOf(itamModel.technical_room)">
+        <MappingFragment StoreEntitySet="technical_room">
+          <ScalarProperty Name="technical_id" ColumnName="technical_id" />
+          <ScalarProperty Name="upload_icf" ColumnName="upload_icf" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="asset_id" ColumnName="asset_id" />
+          <ScalarProperty Name="technician_id" ColumnName="technician_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="technicians">
+      <EntityTypeMapping TypeName="IsTypeOf(itamModel.technician)">
+        <MappingFragment StoreEntitySet="technicians">
+          <ScalarProperty Name="technician_id" ColumnName="technician_id" />
+          <ScalarProperty Name="technician_name" ColumnName="technician_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trials">
+      <EntityTypeMapping TypeName="IsTypeOf(itamModel.trial)">
+        <MappingFragment StoreEntitySet="trials">
+          <ScalarProperty Name="order_stock" ColumnName="order_stock" />
+          <ScalarProperty Name="model1" ColumnName="model1" />
+          <ScalarProperty Name="model2" ColumnName="model2" />
+          <ScalarProperty Name="model3" ColumnName="model3" />
+          <ScalarProperty Name="quantity1" ColumnName="quantity1" />
+          <ScalarProperty Name="quantity2" ColumnName="quantity2" />
+          <ScalarProperty Name="quantity3" ColumnName="quantity3" />
+          <ScalarProperty Name="invoice_number" ColumnName="invoice_number" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="eta" ColumnName="eta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="return_asset">
+      <EntityTypeMapping TypeName="IsTypeOf(itamModel.return_asset)">
+        <MappingFragment StoreEntitySet="return_asset">
+          <ScalarProperty Name="return_id" ColumnName="return_id" />
+          <ScalarProperty Name="serial_number" ColumnName="serial_number" />
+          <ScalarProperty Name="return_date" ColumnName="return_date" />
+          <ScalarProperty Name="manufacture" ColumnName="manufacture" />
+          <ScalarProperty Name="warranty_date" ColumnName="warranty_date" />
+          <ScalarProperty Name="asset_id" ColumnName="asset_id" />
+          <ScalarProperty Name="asset_type_id" ColumnName="asset_type_id" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="report" ColumnName="report" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -1088,7 +1072,7 @@ warning 6002: The table/view 'itam.dbo.return_asset' does not have a primary key
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>

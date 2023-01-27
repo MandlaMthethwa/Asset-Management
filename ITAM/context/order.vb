@@ -9,20 +9,12 @@
 
 Imports System
 Imports System.Collections.Generic
-Imports System.ComponentModel
-Imports System.ComponentModel.DataAnnotations
 
 Partial Public Class order
     Public Property order_id As Integer
-    <DisplayName("Order Number")>
     Public Property order_number As String
-    <DisplayName("Order Date")>
-    <DataType(DataType.Date)>
     Public Property order_date As Nullable(Of Date)
-    <DisplayName("ETA")>
-    <DataType(DataType.Date)>
     Public Property eta As Nullable(Of Date)
-    <DisplayName("Invoice number")>
     Public Property invoice_number As String
 
     Public Overridable Property assets As ICollection(Of asset) = New HashSet(Of asset)

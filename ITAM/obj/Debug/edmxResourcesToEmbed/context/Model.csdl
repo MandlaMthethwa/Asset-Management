@@ -10,7 +10,7 @@
     <Property Name="manufacture" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="serial_number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="warranty_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="warranty_date" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="status_id" Type="Int32" Nullable="false" />
     <Property Name="order_id" Type="Int32" Nullable="false" />
     <Property Name="asset_type_id" Type="Int32" Nullable="false" />
@@ -82,8 +82,8 @@
     </Key>
     <Property Name="order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="order_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="order_date" Type="DateTime" Precision="0" />
-    <Property Name="eta" Type="DateTime" Precision="0" />
+    <Property Name="order_date" Type="DateTime" Precision="3" />
+    <Property Name="eta" Type="DateTime" Precision="3" />
     <Property Name="invoice_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="assets" Relationship="Self.FK_asset_order" FromRole="order" ToRole="asset" />
     <NavigationProperty Name="items" Relationship="Self.FK_item_order" FromRole="order" ToRole="item" />
@@ -157,7 +157,7 @@
     <Property Name="quantity2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="quantity3" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="invoice_number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="date" Type="DateTime" Precision="0" />
+    <Property Name="date" Type="DateTime" Precision="3" />
     <Property Name="description" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
     <Property Name="eta" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
   </EntityType>
@@ -174,9 +174,9 @@
     </Key>
     <Property Name="return_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="serial_number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="return_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="return_date" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="manufacture" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="warranty_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="warranty_date" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="report" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="asset_id" Type="Int32" Nullable="false" />
     <Property Name="asset_type_id" Type="Int32" Nullable="false" />

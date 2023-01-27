@@ -13,6 +13,9 @@ End Code
     <hr />
     @Html.ValidationSummary(True, "", New With {.class = "text-danger"})
 
+    <div>@ViewBag.CurrentOrder.order_number</div>
+
+
 
 
     <div class="form-group">
@@ -47,8 +50,13 @@ End Code
         </div>
     </div>
     <div>
-        @Html.Partial("~/Views/orders/create.vbhtml", New With {.order_id = Model.order_id})
+        @*@Html.Partial("~/Views/orders/create.vbhtml", New With {.order_id = Model.order_id})*@
     </div>
+
+    <div>
+        @Html.HiddenFor(Function(model) model.order_id, New With {.Value = ViewBag.OrderId})
+    </div>
+
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Add Asset" class="btn btn-default" />

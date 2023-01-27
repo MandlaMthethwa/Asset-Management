@@ -315,6 +315,7 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.Context.vb</LastGenOutput>
     </Content>
+    <Content Include="context\Model.edmx.sql" />
     <Content Include="context\Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>

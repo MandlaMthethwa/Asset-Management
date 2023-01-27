@@ -42,9 +42,14 @@ Namespace Controllers
         End Function
 
         ' GET: items/Create
-        Function Create() As ActionResult
-            
-            ViewBag.order_id = New SelectList(db.orders, "order_id", "order_number")
+        Function Create(ByVal OrderId As Integer?) As ActionResult
+
+            'ViewBag.order_id = New SelectList(db.orders, "order_id", "order_number")
+            ViewBag.OrderId = OrderId
+            ViewBag.CurrentOrder = db.orders.Where(Function(a) a.order_id = OrderId).FirstOrDefault()
+            ViewBag.Order_number = db.orders.Where(Function(a) a.order_id = OrderId).Select(Function(b) b.order_number).FirstOrDefault()
+
+
 
             Return View()
         End Function
@@ -56,11 +61,18 @@ Namespace Controllers
         <HttpPost()>
         <ValidateAntiForgeryToken()>
         Function Create(<Bind(Include:="item_id,item_name,description,quantity,manufacture,order_id")> ByVal item As item) As ActionResult
+            ViewBag.OrderId = item.order_id
+
+
             If ModelState.IsValid Then
                 db.items.Add(item)
                 db.SaveChanges()
-                Return RedirectToAction("Create")
+
+                Return RedirectToAction("Create", "items", New With {.OrderId = item.order_id})
+
+
             End If
+
             ViewBag.order = New SelectList(db.orders, "order_id", "order_number", item.order_id)
 
             Return View(item)

@@ -2,8 +2,8 @@
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="itamModelStoreContainer" CdmEntityContainer="itamDB">
     <EntitySetMapping Name="assets">
-      <EntityTypeMapping TypeName="itamModel.asset">
-        <MappingFragment StoreEntitySet="asset">
+      <EntityTypeMapping TypeName="IsTypeOf(itamModel.asset)">
+        <MappingFragment StoreEntitySet="assets">
           <ScalarProperty Name="asset_id" ColumnName="asset_id" />
           <ScalarProperty Name="model" ColumnName="model" />
           <ScalarProperty Name="po_number" ColumnName="po_number" />
@@ -18,16 +18,16 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="asset_type">
-      <EntityTypeMapping TypeName="itamModel.asset_type">
+      <EntityTypeMapping TypeName="IsTypeOf(itamModel.asset_type)">
         <MappingFragment StoreEntitySet="asset_type">
           <ScalarProperty Name="type_id" ColumnName="type_id" />
-          <ScalarProperty Name="asset_type1" ColumnName="asset_type" />
+          <ScalarProperty Name="asset_type1" ColumnName="asset_type1" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="assigns">
-      <EntityTypeMapping TypeName="itamModel.assign">
-        <MappingFragment StoreEntitySet="assign">
+      <EntityTypeMapping TypeName="IsTypeOf(itamModel.assign)">
+        <MappingFragment StoreEntitySet="assigns">
           <ScalarProperty Name="assign_id" ColumnName="assign_id" />
           <ScalarProperty Name="assign_name" ColumnName="assign_name" />
           <ScalarProperty Name="department" ColumnName="department" />
@@ -39,8 +39,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="items">
-      <EntityTypeMapping TypeName="itamModel.item">
-        <MappingFragment StoreEntitySet="item">
+      <EntityTypeMapping TypeName="IsTypeOf(itamModel.item)">
+        <MappingFragment StoreEntitySet="items">
           <ScalarProperty Name="item_id" ColumnName="item_id" />
           <ScalarProperty Name="item_name" ColumnName="item_name" />
           <ScalarProperty Name="description" ColumnName="description" />
@@ -51,18 +51,18 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="locations">
-      <EntityTypeMapping TypeName="itamModel.location">
-        <MappingFragment StoreEntitySet="location">
+      <EntityTypeMapping TypeName="IsTypeOf(itamModel.location)">
+        <MappingFragment StoreEntitySet="locations">
           <ScalarProperty Name="location_id" ColumnName="location_id" />
           <ScalarProperty Name="serial_number" ColumnName="serial_number" />
-          <ScalarProperty Name="location1" ColumnName="location" />
+          <ScalarProperty Name="location1" ColumnName="location1" />
           <ScalarProperty Name="asset_id" ColumnName="asset_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="notifications">
-      <EntityTypeMapping TypeName="itamModel.notification">
-        <MappingFragment StoreEntitySet="notification">
+      <EntityTypeMapping TypeName="IsTypeOf(itamModel.notification)">
+        <MappingFragment StoreEntitySet="notifications">
           <ScalarProperty Name="notify_id" ColumnName="notify_id" />
           <ScalarProperty Name="message" ColumnName="message" />
           <ScalarProperty Name="requester_id" ColumnName="requester_id" />
@@ -70,8 +70,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="orders">
-      <EntityTypeMapping TypeName="itamModel.order">
-        <MappingFragment StoreEntitySet="order">
+      <EntityTypeMapping TypeName="IsTypeOf(itamModel.order)">
+        <MappingFragment StoreEntitySet="orders">
           <ScalarProperty Name="order_id" ColumnName="order_id" />
           <ScalarProperty Name="order_number" ColumnName="order_number" />
           <ScalarProperty Name="order_date" ColumnName="order_date" />
@@ -81,8 +81,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="requesters">
-      <EntityTypeMapping TypeName="itamModel.requester">
-        <MappingFragment StoreEntitySet="requester">
+      <EntityTypeMapping TypeName="IsTypeOf(itamModel.requester)">
+        <MappingFragment StoreEntitySet="requesters">
           <ScalarProperty Name="requester_id" ColumnName="requester_id" />
           <ScalarProperty Name="requester_name" ColumnName="requester_name" />
           <ScalarProperty Name="requester_email_address" ColumnName="requester_email_address" />
@@ -91,7 +91,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="status">
-      <EntityTypeMapping TypeName="itamModel.status">
+      <EntityTypeMapping TypeName="IsTypeOf(itamModel.status)">
         <MappingFragment StoreEntitySet="status">
           <ScalarProperty Name="status_id" ColumnName="status_id" />
           <ScalarProperty Name="status_name" ColumnName="status_name" />
@@ -100,8 +100,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="stocks">
-      <EntityTypeMapping TypeName="itamModel.stock">
-        <MappingFragment StoreEntitySet="stock">
+      <EntityTypeMapping TypeName="IsTypeOf(itamModel.stock)">
+        <MappingFragment StoreEntitySet="stocks">
           <ScalarProperty Name="stock_id" ColumnName="stock_id" />
           <ScalarProperty Name="quantity" ColumnName="quantity" />
           <ScalarProperty Name="model" ColumnName="model" />
@@ -111,7 +111,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="technical_room">
-      <EntityTypeMapping TypeName="itamModel.technical_room">
+      <EntityTypeMapping TypeName="IsTypeOf(itamModel.technical_room)">
         <MappingFragment StoreEntitySet="technical_room">
           <ScalarProperty Name="technical_id" ColumnName="technical_id" />
           <ScalarProperty Name="upload_icf" ColumnName="upload_icf" />
@@ -122,16 +122,16 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="technicians">
-      <EntityTypeMapping TypeName="itamModel.technician">
-        <MappingFragment StoreEntitySet="technician">
+      <EntityTypeMapping TypeName="IsTypeOf(itamModel.technician)">
+        <MappingFragment StoreEntitySet="technicians">
           <ScalarProperty Name="technician_id" ColumnName="technician_id" />
           <ScalarProperty Name="technician_name" ColumnName="technician_name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="trials">
-      <EntityTypeMapping TypeName="itamModel.trial">
-        <MappingFragment StoreEntitySet="trial">
+      <EntityTypeMapping TypeName="IsTypeOf(itamModel.trial)">
+        <MappingFragment StoreEntitySet="trials">
           <ScalarProperty Name="order_stock" ColumnName="order_stock" />
           <ScalarProperty Name="model1" ColumnName="model1" />
           <ScalarProperty Name="model2" ColumnName="model2" />
@@ -147,17 +147,17 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="return_asset">
-      <EntityTypeMapping TypeName="itamModel.return_asset">
+      <EntityTypeMapping TypeName="IsTypeOf(itamModel.return_asset)">
         <MappingFragment StoreEntitySet="return_asset">
           <ScalarProperty Name="return_id" ColumnName="return_id" />
           <ScalarProperty Name="serial_number" ColumnName="serial_number" />
           <ScalarProperty Name="return_date" ColumnName="return_date" />
           <ScalarProperty Name="manufacture" ColumnName="manufacture" />
           <ScalarProperty Name="warranty_date" ColumnName="warranty_date" />
-          <ScalarProperty Name="report" ColumnName="report" />
           <ScalarProperty Name="asset_id" ColumnName="asset_id" />
           <ScalarProperty Name="asset_type_id" ColumnName="asset_type_id" />
           <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="report" ColumnName="report" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

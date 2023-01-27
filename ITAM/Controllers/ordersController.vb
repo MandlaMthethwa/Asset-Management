@@ -60,14 +60,14 @@ Namespace Controllers
         <HttpPost()>
         <ValidateAntiForgeryToken()>
         Function Create(<Bind(Include:="order_id,order_number,order_date,eta,invoice_number")> ByVal order As order) As ActionResult
-            Dim order_number As String = Nothing
-            Dim orderNumber As String = Nothing
-            'Dim order_id = db.orders.Where(Function(o) o.order_number = order_number).FirstOrDefault()
-            Dim orderID = db.orders.Where(Function(o) o.order_number = order_number).Select(Function(o) o.order_id).FirstOrDefault()
+
             If ModelState.IsValid Then
                 db.orders.Add(order)
                 db.SaveChanges()
-                Return RedirectToAction("Create", "items", New With {.id = orderID})
+
+                Dim orderID = db.orders.Where(Function(o) o.order_number = order.order_number).Select(Function(o) o.order_id).FirstOrDefault()
+
+                Return RedirectToAction("Create", "items", New With {.OrderId = orderID})
             End If
 
 

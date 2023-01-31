@@ -33,9 +33,11 @@ Namespace Controllers
             End If
             Return View(item)
         End Function
-        'Function _Items() As ActionResult
-        '    Return View()
-        'End Function
+        Function Items(ByVal OrderId As Integer?) As ActionResult
+
+            Dim item = db.items.Where(Function(f) f.order_id = OrderId)
+            Return View(item.ToList())
+        End Function
 
         ' GET: items/Create
         Function Create(ByVal OrderId As Integer?) As ActionResult
@@ -43,7 +45,7 @@ Namespace Controllers
             ViewBag.CurrentOrder = db.orders.Where(Function(a) a.order_id = OrderId).FirstOrDefault()
             ViewBag.Items = db.items.Where(Function(a) a.order_id = OrderId OrElse a.order_id Is Nothing).FirstOrDefault()
             ViewBag.OrderID = OrderId
-            Return PartialView()
+            Return View()
         End Function
 
 

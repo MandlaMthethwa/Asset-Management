@@ -1,8 +1,8 @@
 ﻿@ModelType ITAM.item
 @Code
     ViewData("Title") = "Create"
-    Layout = "~/Views/Shared/_Layout.vbhtml"
 End Code
+<link rel="stylesheet" href="../Content/site.css" />
 
 <h2>Add Item</h2>
 
@@ -11,67 +11,68 @@ End Code
 
     @<div class="form-horizontal">
 
-    @Html.ValidationSummary(True, "", New With {.class = "text-danger"})
+        @Html.ValidationSummary(True, "", New With {.class = "text-danger"})
 
-    <h3>Order details</h3>
-    <hr />
-    <table style="width:100%">
-        <tr>
-            <th>Order Number</th>
-            <th>Invoice number</th>
-            <th>Order date</th>
+        <h3>Order details</h3>
+        <hr />
+        <table style="width:100%">
+            <tr>
+                <th>Order Number</th>
+                <th>Invoice number</th>
+                <th>Order date</th>
 
-        </tr>
+            </tr>
 
-        <tr>
-            <td>@ViewBag.CurrentOrder.order_number</td>
-            <td>@ViewBag.CurrentOrder.invoice_number</td>
-            <td>@ViewBag.CurrentOrder.order_date</td>
-        </tr>
-    </table>
-    <hr />
-    @Html.Partial("_Items")
-    <h3> Add Item</h3>
-    <Table>
-        <tr>
-            <td>
-                @Html.EditorFor(Function(model) model.item_name, New With {.htmlAttributes = New With {.class = "form-control", .placeholder = "Enter Item Name"}})
-                @Html.ValidationMessageFor(Function(model) model.item_name, "", New With {.class = "text-danger"})
+            <tr>
+                <td>@ViewBag.CurrentOrder.order_number</td>
+                <td>@ViewBag.CurrentOrder.invoice_number</td>
+                <td>@ViewBag.CurrentOrder.order_date</td>
+            </tr>
+        </table>
+        <hr />
+        <div>@Html.Action("Items", New With {.htmlAttributes = New With {.id = ViewBag.OrderID}})</div>
 
-            </td>
-            <td>
-                @Html.EditorFor(Function(model) model.description, New With {.htmlAttributes = New With {.class = "form-control", .placeholder = "Enter Order Description"}})
-                @Html.ValidationMessageFor(Function(model) model.description, "", New With {.class = "text-danger"})
+        <h3> Add Item</h3>
+        <Table>
+            <tr>
+                <td>
+                    @Html.EditorFor(Function(model) model.item_name, New With {.htmlAttributes = New With {.class = "form-control", .placeholder = "Enter Item Name"}})
+                    @Html.ValidationMessageFor(Function(model) model.item_name, "", New With {.class = "text-danger"})
 
-            </td>
-            <td>
-                @Html.EditorFor(Function(model) model.quantity, New With {.htmlAttributes = New With {.class = "form-control", .placeholder = "Enter Quantity"}})
-                @Html.ValidationMessageFor(Function(model) model.quantity, "", New With {.class = "text-danger"})
+                </td>
+                <td>
+                    @Html.EditorFor(Function(model) model.description, New With {.htmlAttributes = New With {.class = "form-control", .placeholder = "Enter Order Description"}})
+                    @Html.ValidationMessageFor(Function(model) model.description, "", New With {.class = "text-danger"})
 
-            </td>
-            <td>
-                @Html.EditorFor(Function(model) model.manufacture, New With {.htmlAttributes = New With {.class = "form-control", .placeholder = "Enter The Manufacturer "}})
-                @Html.ValidationMessageFor(Function(model) model.manufacture, "", New With {.class = "text-danger"})
+                </td>
+                <td>
+                    @Html.EditorFor(Function(model) model.quantity, New With {.htmlAttributes = New With {.class = "form-control", .placeholder = "Enter Quantity"}})
+                    @Html.ValidationMessageFor(Function(model) model.quantity, "", New With {.class = "text-danger"})
 
-            </td>
-            <td>
-                <input type="submit" value="Add Asset" Class="btn button-add" />
-            </td>
+                </td>
+                <td>
+                    @Html.EditorFor(Function(model) model.manufacture, New With {.htmlAttributes = New With {.class = "form-control", .placeholder = "Enter The Manufacturer "}})
+                    @Html.ValidationMessageFor(Function(model) model.manufacture, "", New With {.class = "text-danger"})
 
-        </tr>
-    </Table>
+                </td>
+                <td>
+                    <input type="submit" value="Add Asset" Class="btn button-add" />
+                </td>
 
-    <div>
-        @Html.HiddenFor(Function(model) model.order_id, New With {.Value = ViewBag.OrderID})
-    </div>
-    <br /><br />
-    <div>
-        <a style="text-align: right; float:right;" Class="btn button-add" @Html.ActionLink("Done", "Index", "Orders") |
+            </tr>
+        </Table>
+
+        <div>
+            @Html.HiddenFor(Function(model) model.order_id, New With {.Value = ViewBag.OrderID})
+        </div>
+        <br /><br />
+        <div>
+            <a style="text-align: right; float:right;" Class="btn button-add" @Html.ActionLink("Done", "Index", "Orders") |
         <a style = "text-align: right; float:left;" Class="btn button-add" @Html.ActionLink("Add a new order", "Create", "Orders")
 
-    </div>
+        </div>
 
-</div>
+    </div>
 End Using
 
 

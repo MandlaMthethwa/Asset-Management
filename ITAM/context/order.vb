@@ -23,7 +23,7 @@ Partial Public Class order
     <DisplayName("ETA")>
     <DataType(DataType.Date)>
     Public Property eta As Nullable(Of Date)
-    <DisplayName("Invoice number")>
+    <DisplayName("Invoice Number")>
     Public Property invoice_number As String
 
     Public Overridable Property assets As ICollection(Of asset) = New HashSet(Of asset)

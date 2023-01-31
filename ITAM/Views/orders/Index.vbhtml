@@ -4,10 +4,10 @@ ViewData("Title") = "Index"
 Layout = "~/Views/Shared/_Layout.vbhtml"
 End Code
 
-<h2>Index</h2>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>Orders</h2>
+<div><a  class="button-add" @Html.ActionLink("Add a new order", "Create")> </a> </div>
+<br /><br />
+
 <table class="table">
     <tr>
         <th>
@@ -22,7 +22,6 @@ End Code
         <th>
             @Html.DisplayNameFor(Function(model) model.invoice_number)
         </th>
-        
         <th></th>
     </tr>
 
@@ -42,9 +41,11 @@ End Code
         </td>
         
         <td>
-            @Html.ActionLink("Edit", "Edit", New With {.id = item.order_id}) |
+            @*@Html.ActionLink("Edit", "Edit", New With {.id = item.order_id}) |*@
+           @*@Html.Action("Create", "Items", New With {.id = item.order_id})*@
+            @*|
             @Html.ActionLink("Details", "Index", "Items", New With {.id = item.order_id}) |
-            @Html.ActionLink("Delete", "Delete", New With {.id = item.order_id})
+            @Html.ActionLink("Delete", "Delete", New With {.id = item.order_id})*@
         </td>
     </tr>
 Next

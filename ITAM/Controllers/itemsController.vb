@@ -16,7 +16,6 @@ Namespace Controllers
 
         ' GET: items
         Function Index() As ActionResult
-
             Dim items = db.items.Include(Function(r) r.order)
             'Dim items = db.items.Where(Function(f) f.order_id = OrderId)
             Return View(items.ToList())
@@ -36,11 +35,10 @@ Namespace Controllers
 
         ' GET: items/Create
         Function Create(ByVal OrderId As Integer?) As ActionResult
-
-            'ViewBag.order_id = New SelectList(db.orders, "order_id", "order_number")
+            ViewBag.order_id = New SelectList(db.orders, "order_id", "order_number")
             ViewBag.CurrentOrder = db.orders.Where(Function(a) a.order_id = OrderId).FirstOrDefault()
+            ViewBag.Items = db.items.Where(Function(a) a.order_id = OrderId OrElse a.order_id Is Nothing).FirstOrDefault()
             ViewBag.OrderID = OrderId
-
             Return View()
         End Function
 
@@ -52,11 +50,10 @@ Namespace Controllers
         <ValidateAntiForgeryToken()>
         Function Create(<Bind(Include:="item_id,item_name,description,quantity,manufacture,order_id")> ByVal item As item) As ActionResult
             ViewBag.OrderId = item.order_id
-
             If ModelState.IsValid Then
                 db.items.Add(item)
                 db.SaveChanges()
-            Return RedirectToAction("Create", "items", New With {.OrderId = item.order_id})
+                Return RedirectToAction("Create", "items", New With {.OrderId = item.order_id})
             End If
             Return View("Create")
         End Function

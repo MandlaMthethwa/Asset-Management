@@ -16,11 +16,6 @@ Namespace Controllers
 
         ' GET: Received_Stock
         Function Index() As ActionResult
-            'Dim items = db.items
-            'Dim order_id = db.orders.Add(order_id)
-            'If order_id = Then
-            '    Return View(items.ToList())
-            'End If
             Dim stocks = db.stocks.Include(Function(s) s.order).Include(Function(s) s.status)
             Return View(stocks.ToList())
         End Function
@@ -38,7 +33,9 @@ Namespace Controllers
         End Function
 
         ' GET: Received_Stock/Create
-        Function Create() As ActionResult
+        Function Create(ByVal OrderId As Integer?) As ActionResult
+            ViewBag.CurrentOrder = db.orders.Where(Function(a) a.order_id = OrderId).FirstOrDefault()
+
             ViewBag.order_id = New SelectList(db.orders, "order_id", "invoice_number")
             ViewBag.status_id = New SelectList(db.status, "status_id", "status_name")
             Return View()
@@ -51,12 +48,7 @@ Namespace Controllers
         <ValidateAntiForgeryToken()>
         Function Create(<Bind(Include:="stock_id,quantity,order_id,status_id")> ByVal stock As stock) As ActionResult
 
-            'If db.orders.quantity < db.stocks.Add(quantity) Then
-            '    MessageBox.Show("rfenf")
-            'End If
-            'If quantity Then
 
-            'End If
             If ModelState.IsValid Then
                 db.stocks.Add(stock)
                 db.SaveChanges()
@@ -64,18 +56,7 @@ Namespace Controllers
             End If
             ViewBag.order_id = New SelectList(db.orders, "order_id", "invoice_number", stock.order_id)
             ViewBag.status_id = New SelectList(db.status, "status_id", "status_name", stock.status_id)
-            ViewBag.order_quantity = New SelectList(db.orders, "order_id", "quantity")
-            'If quantity < ViewBag.order_quantity Then
-            '    Dim unused = MsgBox("Less than same", 1, "MsgBox Demonstration")
-            'ElseIf ViewBag.quantity > ViewBag.order_quantity Then
-            '    Dim unused = MsgBox("More than  ordered", 1, "MsgBox Demonstration")
-            'Else
-            '    Dim unused = MsgBox("It's the same", 1, "MsgBox Demonstration")
 
-            'End If
-            'If ViewBag.quantity > ViewBag.order_quantity Then
-            '    MsgBox()
-            'End If
             Return View(stock)
         End Function
 

@@ -129,23 +129,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="trials">
-      <EntityTypeMapping TypeName="itamModel.trial">
-        <MappingFragment StoreEntitySet="trial">
-          <ScalarProperty Name="order_stock" ColumnName="order_stock" />
-          <ScalarProperty Name="model1" ColumnName="model1" />
-          <ScalarProperty Name="model2" ColumnName="model2" />
-          <ScalarProperty Name="model3" ColumnName="model3" />
-          <ScalarProperty Name="quantity1" ColumnName="quantity1" />
-          <ScalarProperty Name="quantity2" ColumnName="quantity2" />
-          <ScalarProperty Name="quantity3" ColumnName="quantity3" />
-          <ScalarProperty Name="invoice_number" ColumnName="invoice_number" />
-          <ScalarProperty Name="date" ColumnName="date" />
-          <ScalarProperty Name="description" ColumnName="description" />
-          <ScalarProperty Name="eta" ColumnName="eta" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="return_asset">
       <EntityTypeMapping TypeName="itamModel.return_asset">
         <MappingFragment StoreEntitySet="return_asset">

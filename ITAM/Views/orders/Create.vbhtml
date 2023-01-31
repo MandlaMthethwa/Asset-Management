@@ -1,7 +1,6 @@
 ﻿@ModelType ITAM.order
 @Code
     ViewData("Title") = "Create"
-    'service = "~/Views/items/Create.vbhtml"
 End Code
 
 <h2>Add a new Order</h2>
@@ -11,49 +10,42 @@ End Code
 
 
     @<div class="form-horizontal">
-        <h3></h3>
-        <hr />
-        @Html.ValidationSummary(True, "", New With {.class = "text-danger"})
-        <div class="form-group">
-            @Html.LabelFor(Function(model) model.order_number, htmlAttributes:=New With {.class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.EditorFor(Function(model) model.order_number, New With {.htmlAttributes = New With {.class = "form-control"}})
+    <h3></h3>
+    <hr />
+
+
+    @Html.ValidationSummary(True, "", New With {.class = "text-danger"})
+    <table style="width:100%">
+        <tr> <th>Order Number</th> <th>ETA</th> <th>Invoice number</th> <th>Action</th></tr>
+        <tr>
+            <td>
+                @Html.EditorFor(Function(model) model.order_number, New With {.htmlAttributes = New With {.class = "form-control", .placeholder = "Enter order nuber"}})
                 @Html.ValidationMessageFor(Function(model) model.order_number, "", New With {.class = "text-danger"})
-            </div>
-        </div>
-
-        <div>
-            @Html.HiddenFor(Function(model) model.order_date, New With {.Value = DateTime.Now.ToString("yyyy-MM-dd")})
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(Function(model) model.eta, htmlAttributes:=New With {.class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.EditorFor(Function(model) model.eta, New With {.htmlAttributes = New With {.class = "form-control"}})
+            </td>
+            <td>
+                @Html.EditorFor(Function(model) model.eta, New With {.htmlAttributes = New With {.class = "form-control", .placeholder = "Enter order nuber"}})
                 @Html.ValidationMessageFor(Function(model) model.eta, "", New With {.class = "text-danger"})
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(Function(model) model.invoice_number, htmlAttributes:=New With {.class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.EditorFor(Function(model) model.invoice_number, New With {.htmlAttributes = New With {.class = "form-control"}})
+            </td>
+            <td>
+                @Html.EditorFor(Function(model) model.invoice_number, New With {.htmlAttributes = New With {.class = "form-control", .placeholder = "Enter order nuber"}})
                 @Html.ValidationMessageFor(Function(model) model.invoice_number, "", New With {.class = "text-danger"})
-            </div>
-        </div>
+            </td>
+            <td>
+                <input type="submit" value="Add Order" Class="btn button-add" />
+            </td>
+        </tr>
+    </table>
+    <br /><br />
 
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
+    <div>
+        @Html.HiddenFor(Function(model) model.order_date, New With {.Value = DateTime.Now.ToString("yyyy-MM-dd")})
     </div>
+    <div>
+        <a style="text-align: right; float:right;" Class="btn btn-default" @Html.ActionLink("Cancel", "Index")
+    </div>
+</div>
 End Using
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @Section Scripts
     @Scripts.Render("~/bundles/jqueryval")

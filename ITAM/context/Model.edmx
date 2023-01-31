@@ -144,22 +144,6 @@ warning 6002: The table/view 'itam.dbo.return_asset' does not have a primary key
           <Property Name="technician_id" Type="int" Nullable="false" />
           <Property Name="technician_name" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <EntityType Name="trial">
-          <Key>
-            <PropertyRef Name="order_stock" />
-          </Key>
-          <Property Name="order_stock" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="model1" Type="varchar" MaxLength="20" />
-          <Property Name="model2" Type="varchar" MaxLength="20" />
-          <Property Name="model3" Type="varchar" MaxLength="20" />
-          <Property Name="quantity1" Type="varchar" MaxLength="10" />
-          <Property Name="quantity2" Type="varchar" MaxLength="10" />
-          <Property Name="quantity3" Type="varchar" MaxLength="10" />
-          <Property Name="invoice_number" Type="varchar" MaxLength="15" />
-          <Property Name="date" Type="date" />
-          <Property Name="description" Type="varchar" MaxLength="70" />
-          <Property Name="eta" Type="varchar" MaxLength="20" />
-        </EntityType>
         <Association Name="FK_asset_asset_type">
           <End Role="asset" Type="Self.asset" Multiplicity="1" />
           <End Role="asset1" Type="Self.asset" Multiplicity="0..1" />
@@ -365,7 +349,6 @@ warning 6002: The table/view 'itam.dbo.return_asset' does not have a primary key
           <EntitySet Name="stock" EntityType="Self.stock" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="technical_room" EntityType="Self.technical_room" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="technician" EntityType="Self.technician" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="trial" EntityType="Self.trial" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="return_asset" EntityType="Self.return_asset" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [return_asset].[return_id] AS [return_id], 
@@ -593,22 +576,6 @@ warning 6002: The table/view 'itam.dbo.return_asset' does not have a primary key
           <Property Name="technician_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="assigns" Relationship="Self.FK_assign_technician" FromRole="technician" ToRole="assign" />
           <NavigationProperty Name="technical_room" Relationship="Self.FK_technical_room_technician" FromRole="technician" ToRole="technical_room" />
-        </EntityType>
-        <EntityType Name="trial">
-          <Key>
-            <PropertyRef Name="order_stock" />
-          </Key>
-          <Property Name="order_stock" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="model1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="model2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="model3" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="quantity1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="quantity2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="quantity3" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="invoice_number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="date" Type="DateTime" Precision="0" />
-          <Property Name="description" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
-          <Property Name="eta" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="return_asset">
           <Key>
@@ -839,7 +806,6 @@ warning 6002: The table/view 'itam.dbo.return_asset' does not have a primary key
           <EntitySet Name="stocks" EntityType="Self.stock" />
           <EntitySet Name="technical_room" EntityType="Self.technical_room" />
           <EntitySet Name="technicians" EntityType="Self.technician" />
-          <EntitySet Name="trials" EntityType="Self.trial" />
           <EntitySet Name="return_asset" EntityType="Self.return_asset" />
           <AssociationSet Name="FK_asset_asset_type" Association="Self.FK_asset_asset_type">
             <End Role="asset" EntitySet="assets" />
@@ -1037,23 +1003,6 @@ warning 6002: The table/view 'itam.dbo.return_asset' does not have a primary key
               <MappingFragment StoreEntitySet="technician">
                 <ScalarProperty Name="technician_id" ColumnName="technician_id" />
                 <ScalarProperty Name="technician_name" ColumnName="technician_name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="trials">
-            <EntityTypeMapping TypeName="itamModel.trial">
-              <MappingFragment StoreEntitySet="trial">
-                <ScalarProperty Name="order_stock" ColumnName="order_stock" />
-                <ScalarProperty Name="model1" ColumnName="model1" />
-                <ScalarProperty Name="model2" ColumnName="model2" />
-                <ScalarProperty Name="model3" ColumnName="model3" />
-                <ScalarProperty Name="quantity1" ColumnName="quantity1" />
-                <ScalarProperty Name="quantity2" ColumnName="quantity2" />
-                <ScalarProperty Name="quantity3" ColumnName="quantity3" />
-                <ScalarProperty Name="invoice_number" ColumnName="invoice_number" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="eta" ColumnName="eta" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

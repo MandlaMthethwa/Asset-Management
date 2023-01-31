@@ -14,6 +14,9 @@ body {
 .dl-horizontal dt {
     white-space: normal;
 }
+.container {
+    display: flex;
+}
 
 
 * {
@@ -185,6 +188,7 @@ html {
     margin-right: auto;
 }
 
+
 th, td, tr {
     border: 2px solid #ddd;
     text-align: left;
@@ -337,7 +341,6 @@ button, select {
 
 .container div {
     display: flex;
-    flex-flow: row nowrap;
 }
 
     .container div input {

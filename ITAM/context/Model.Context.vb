@@ -34,7 +34,6 @@ Partial Public Class itamDB
     Public Overridable Property stocks() As DbSet(Of stock)
     Public Overridable Property technical_room() As DbSet(Of technical_room)
     Public Overridable Property technicians() As DbSet(Of technician)
-    Public Overridable Property trials() As DbSet(Of trial)
     Public Overridable Property return_asset() As DbSet(Of return_asset)
 
 End Class

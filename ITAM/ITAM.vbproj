@@ -253,9 +253,6 @@
     <Compile Include="context\technician.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="context\trial.vb">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\AccountController.vb" />
     <Compile Include="Controllers\assetsController.vb" />
     <Compile Include="Controllers\Asset_typeController.vb" />
@@ -265,7 +262,6 @@
     <Compile Include="Controllers\ManageController.vb" />
     <Compile Include="Controllers\NotifyController.vb" />
     <Compile Include="Controllers\ordersController.vb" />
-    <Compile Include="Controllers\Order_trialController.vb" />
     <Compile Include="Controllers\Received_StockController.vb" />
     <Compile Include="Controllers\Return_AssetController.vb" />
     <Compile Include="Controllers\StatusController.vb" />
@@ -444,6 +440,7 @@
     <Content Include="Views\items\Details.vbhtml" />
     <Content Include="Views\items\Edit.vbhtml" />
     <Content Include="Views\items\Index.vbhtml" />
+    <Content Include="Views\orders\Items.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />

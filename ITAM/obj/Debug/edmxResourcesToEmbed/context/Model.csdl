@@ -145,22 +145,6 @@
     <NavigationProperty Name="assigns" Relationship="Self.FK_assign_technician" FromRole="technician" ToRole="assign" />
     <NavigationProperty Name="technical_room" Relationship="Self.FK_technical_room_technician" FromRole="technician" ToRole="technical_room" />
   </EntityType>
-  <EntityType Name="trial">
-    <Key>
-      <PropertyRef Name="order_stock" />
-    </Key>
-    <Property Name="order_stock" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="model1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="model2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="model3" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="quantity1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="quantity2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="quantity3" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="invoice_number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="date" Type="DateTime" Precision="0" />
-    <Property Name="description" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
-    <Property Name="eta" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-  </EntityType>
   <EntityType Name="return_asset">
     <Key>
       <PropertyRef Name="return_id" />
@@ -390,7 +374,6 @@
     <EntitySet Name="stocks" EntityType="Self.stock" />
     <EntitySet Name="technical_room" EntityType="Self.technical_room" />
     <EntitySet Name="technicians" EntityType="Self.technician" />
-    <EntitySet Name="trials" EntityType="Self.trial" />
     <EntitySet Name="return_asset" EntityType="Self.return_asset" />
     <AssociationSet Name="FK_asset_asset_type" Association="Self.FK_asset_asset_type">
       <End Role="asset" EntitySet="assets" />

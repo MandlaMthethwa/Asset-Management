@@ -5,7 +5,15 @@
 End Code
 
 <h2>Create</h2>
-
+@*<div>
+    @ViewBag.CurrentOrder.order_number
+</div>
+<div>
+    @ViewBag.CurrentOrder.invoice_number
+</div>
+<div>
+    @ViewBag.Items.item_name
+</div>*@
 @Using (Html.BeginForm()) 
     @Html.AntiForgeryToken()
     

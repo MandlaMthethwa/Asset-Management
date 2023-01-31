@@ -13,13 +13,14 @@ Namespace Controllers
     Public Class ordersController
         Inherits System.Web.Mvc.Controller
 
-        'Private Const Include As String = "item_id,item_name,description,quantity,manufacture"
         Private db As New itamDB
 
 
         ' GET: orders
         Function Index() As ActionResult
+
             Dim orders = db.orders
+
             Return View(orders.ToList())
         End Function
 
@@ -35,12 +36,7 @@ Namespace Controllers
             Return View(order)
         End Function
 
-        'Public Class itemsController
-        '    Private _service As IItemsService
-        '    Public Sub New(service As IItemsService)
-        '        _service = service
-        '    End Sub
-        'End Class
+
 
         ' GET: orders/Create
         Function Create() As ActionResult
@@ -48,12 +44,8 @@ Namespace Controllers
             Return View()
         End Function
 
-        Function Trial() As ActionResult
-            ViewBag.item_id = New SelectList(db.items, "item_id")
 
-            Return View()
-        End Function
-       
+
         ' POST: orders/Create
         'To protect from overposting attacks, enable the specific properties you want to bind to, for 
         'more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -61,19 +53,18 @@ Namespace Controllers
         <ValidateAntiForgeryToken()>
         Function Create(<Bind(Include:="order_id,order_number,order_date,eta,invoice_number")> ByVal order As order) As ActionResult
 
+            If order.eta < DateTime.Now Then
+                ModelState.AddModelError("ETA", "ETA date must not be in the past")
+            End If
             If ModelState.IsValid Then
                 db.orders.Add(order)
                 db.SaveChanges()
-
                 Dim orderID = db.orders.Where(Function(o) o.order_number = order.order_number).Select(Function(o) o.order_id).FirstOrDefault()
 
                 Return RedirectToAction("Create", "items", New With {.OrderId = orderID})
             End If
-
-
             Return View(order)
         End Function
-
 
 
         ' GET: orders/Edit/5
@@ -85,6 +76,7 @@ Namespace Controllers
             If IsNothing(order) Then
                 Return HttpNotFound()
             End If
+            ViewBag.Items = db.items.Where(Function(a) a.order_id = id).FirstOrDefault()
             'ViewBag.item_id = New SelectList(db.items, "item_id", "item_name", order.item_id)
             Return View(order)
         End Function
@@ -98,9 +90,10 @@ Namespace Controllers
             If ModelState.IsValid Then
                 db.Entry(order).State = EntityState.Modified
                 db.SaveChanges()
-                Return RedirectToAction("Index")
+                Dim orderID = db.orders.Where(Function(o) o.order_number = order.order_number).Select(Function(o) o.order_id).FirstOrDefault()
+                Return RedirectToAction("Create", "Received_stock", New With {.OrderId = orderID})
             End If
-            'ViewBag.item_id = New SelectList(db.items, "item_id", "item_name", order.item_id)
+            ViewBag.CurrentOrder = db.orders.Where(Function(a) a.order_id = order.order_id).FirstOrDefault()
             Return View(order)
         End Function
 

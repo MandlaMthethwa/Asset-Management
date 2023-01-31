@@ -2,6 +2,7 @@
 Imports System.Collections.Generic
 Imports System.Data
 Imports System.Data.Entity
+Imports System.Data.Entity.Migrations
 Imports System.Linq
 Imports System.Net
 Imports System.Web
@@ -32,6 +33,9 @@ Namespace Controllers
             End If
             Return View(item)
         End Function
+        'Function _Items() As ActionResult
+        '    Return View()
+        'End Function
 
         ' GET: items/Create
         Function Create(ByVal OrderId As Integer?) As ActionResult
@@ -39,7 +43,7 @@ Namespace Controllers
             ViewBag.CurrentOrder = db.orders.Where(Function(a) a.order_id = OrderId).FirstOrDefault()
             ViewBag.Items = db.items.Where(Function(a) a.order_id = OrderId OrElse a.order_id Is Nothing).FirstOrDefault()
             ViewBag.OrderID = OrderId
-            Return View()
+            Return PartialView()
         End Function
 
 

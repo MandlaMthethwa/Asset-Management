@@ -41,7 +41,7 @@ End Code
         @Html.HiddenFor(Function(model) model.order_date, New With {.Value = DateTime.Now.ToString("yyyy-MM-dd")})
     </div>
     <div>
-        <a style="text-align: right; float:right;" Class="btn btn-default" @Html.ActionLink("Cancel", "Index")
+        <a style="text-align: right; float:right;" Class="btn button-add" @Html.ActionLink("Cancel", "Index")
     </div>
 </div>
 End Using

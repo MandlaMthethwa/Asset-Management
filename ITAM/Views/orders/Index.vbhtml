@@ -41,11 +41,11 @@ End Code
         </td>
         
         <td>
-            @*@Html.ActionLink("Edit", "Edit", New With {.id = item.order_id}) |*@
+            @Html.ActionLink("Edit", "Edit", New With {.id = item.order_id}) |
            @*@Html.Action("Create", "Items", New With {.id = item.order_id})*@
-            @*|
+            |
             @Html.ActionLink("Details", "Index", "Items", New With {.id = item.order_id}) |
-            @Html.ActionLink("Delete", "Delete", New With {.id = item.order_id})*@
+            @Html.ActionLink("Delete", "Delete", New With {.id = item.order_id})
         </td>
     </tr>
 Next

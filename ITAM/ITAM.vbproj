@@ -441,6 +441,7 @@
     <Content Include="Views\items\Edit.vbhtml" />
     <Content Include="Views\items\Index.vbhtml" />
     <Content Include="Views\orders\Items.vbhtml" />
+    <Content Include="Views\items\_Items.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />

@@ -18,9 +18,7 @@ Namespace Controllers
 
         ' GET: orders
         Function Index() As ActionResult
-
             Dim orders = db.orders
-
             Return View(orders.ToList())
         End Function
 

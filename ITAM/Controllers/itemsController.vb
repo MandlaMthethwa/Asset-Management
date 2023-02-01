@@ -79,11 +79,14 @@ Namespace Controllers
         'more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         <HttpPost()>
         <ValidateAntiForgeryToken()>
-        Function Edit(<Bind(Include:="item_id,item_name,description,quantity,manufacture")> ByVal item As item) As ActionResult
+        Function Edit(<Bind(Include:="item_id,item_name,description,quantity,manufacture,order_id")> ByVal item As item) As ActionResult
+            ViewBag.OrderId = item.order_id
             If ModelState.IsValid Then
                 db.Entry(item).State = EntityState.Modified
                 db.SaveChanges()
-                Return RedirectToAction("Index")
+                Dim orderID = db.items.Where(Function(o) o.order_id = item.order_id).Select(Function(o) o.order_id).FirstOrDefault()
+
+                Return RedirectToAction("Create", "items", New With {.OrderId = item.order_id})
             End If
             Return View(item)
         End Function
@@ -108,7 +111,9 @@ Namespace Controllers
             Dim item As item = db.items.Find(id)
             db.items.Remove(item)
             db.SaveChanges()
-            Return RedirectToAction("Index")
+            ViewBag.OrderId = item.order_id
+            Dim orderID = db.items.Where(Function(o) o.order_id = item.order_id).Select(Function(o) o.order_id).FirstOrDefault()
+            Return RedirectToAction("Create", "items", New With {.OrderId = item.order_id})
         End Function
 
         Protected Overrides Sub Dispose(ByVal disposing As Boolean)

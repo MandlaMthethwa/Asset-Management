@@ -18,7 +18,11 @@ Namespace Controllers
 
         ' GET: orders
         Function Index() As ActionResult
+
             Dim orders = db.orders
+
+
+
             Return View(orders.ToList())
         End Function
 
@@ -55,15 +59,23 @@ Namespace Controllers
                 ModelState.AddModelError("ETA", "ETA date must not be in the past")
             End If
             If ModelState.IsValid Then
-                db.orders.Add(order)
-                db.SaveChanges()
-                Dim orderID = db.orders.Where(Function(o) o.order_number = order.order_number).Select(Function(o) o.order_id).FirstOrDefault()
+                If Not OrderNumberExists(order.order_number) Then
+                    db.orders.Add(order)
+                    db.SaveChanges()
+                    Dim orderID = db.orders.Where(Function(o) o.order_number = order.order_number).Select(Function(o) o.order_id).FirstOrDefault()
 
-                Return RedirectToAction("Create", "items", New With {.OrderId = orderID})
+                    Return RedirectToAction("Create", "items", New With {.OrderId = orderID})
+                Else
+                    ModelState.AddModelError("order_number", "Order Number already exists.")
+                End If
             End If
+
             Return View(order)
         End Function
 
+        Private Function OrderNumberExists(orderNumber As String) As Boolean
+            Return db.orders.Any(Function(o) o.order_number = orderNumber)
+        End Function
 
         ' GET: orders/Edit/5
         Function Edit(ByVal id As Integer?) As ActionResult

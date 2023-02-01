@@ -34,7 +34,6 @@
                     @Html.DisplayFor(Function(modelItem) item.manufacture)
                 </td>
                 <td>
-
                     <a Class="btn button-update" @Html.ActionLink("Edit Item", "Edit", New With {.id = item.item_id})
                  <a Class="btn button-delete"  @Html.ActionLink("Remove Item", "Delete", New With {.id = item.item_id})
                 </td>

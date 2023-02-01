@@ -6,50 +6,50 @@ End Code
 
 <h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>item</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
+<h3 style="color:red">Are you sure you want to delete this item?</h3>
+
+<hr />
+<table class="table">
+    <tr>
+        <th>
             @Html.DisplayNameFor(Function(model) model.item_name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.item_name)
-        </dd>
-
-        <dt>
+        </th>
+        <th>
             @Html.DisplayNameFor(Function(model) model.description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.description)
-        </dd>
-
-        <dt>
+        </th>
+        <th>
             @Html.DisplayNameFor(Function(model) model.quantity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.quantity)
-        </dd>
-
-        <dt>
+        </th>
+        <th>
             @Html.DisplayNameFor(Function(model) model.manufacture)
-        </dt>
+        </th>
+        <th>Action</th>
+    </tr>
 
-        <dd>
+    <tr>
+        <td>
+            @Html.DisplayFor(Function(model) model.item_name)
+        </td>
+        <td>
+            @Html.DisplayFor(Function(model) model.description)
+        </td>
+        <td>
+            @Html.DisplayFor(Function(model) model.quantity)
+        </td>
+        <td>
             @Html.DisplayFor(Function(model) model.manufacture)
-        </dd>
+        </td>
 
-    </dl>
-    @Using (Html.BeginForm())
-        @Html.AntiForgeryToken()
+        <td>
+            <input type="submit" value="Delete" class="btn button-delete" />
+        </td>
+    </tr>
+</table>
 
-        @<div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    End Using
-</div>
+@Using (Html.BeginForm())
+    @Html.AntiForgeryToken()
+
+
+
+End Using
+@*<a Class="btn button-add" href="@Url.Action("create", New With {.OrderID = ViewBag.OrderID})">Cancel</a>*@

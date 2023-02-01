@@ -26,7 +26,7 @@ End Code
             <tr>
                 <td>@ViewBag.CurrentOrder.order_number</td>
                 <td>@ViewBag.CurrentOrder.invoice_number</td>
-                <td>@ViewBag.CurrentOrder.order_date</td>
+                <td>@ViewBag.CurrentOrder.order_date.ToShortDateString()</td>
             </tr>
         </table>
         <hr />
@@ -75,7 +75,11 @@ End Code
     </div>
 End Using
 
-
+<script>
+    $(document).ready(function() {
+        $("input:text:visible:first").focus();
+    });
+</script>
 
 @Section Scripts
     @Scripts.Render("~/bundles/jqueryval")

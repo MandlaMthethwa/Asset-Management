@@ -5,11 +5,14 @@ End Code
 <link rel="stylesheet" href="../Content/site" />
 
 <h2>Orders</h2>
-<div><a class="button-add" @Html.ActionLink("Add a new order", "Create")> </a> </div>
 <br />
 <br />
 
-<table class="table">
+<div> <a Class="button-add" @Html.ActionLink("Add a new order", "Create")> </a> </div>
+
+
+
+    <Table Class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(Function(model) model.order_number)
@@ -42,15 +45,15 @@ End Code
             </td>
 
             <td>
-             <a class="btn button-add" href="@Url.Action("Edit", New With {.id = item.order_id})">Update Order details</a>
+                <a class="btn button-add" href="@Url.Action("Edit", New With {.id = item.order_id})">Update Order details</a>
                 @*@Html.ActionLink("ItemsOrderd", "Items", New With {.htmlAttributes = New With {.id = item.order_id}})*@
-                
+
                 <a class="btn button-add" href="@Url.Action("create", "items", New With {.OrderID = item.order_id})">Add or Edit Items</a>
                 @*<a id="item.order_id" href="../Items/Create">Create</a>
-                @Html.ActionLink("Details", "Index", "Items", New With {.id = item.order_id}) |
-                @Html.ActionLink("Delete", "Delete", New With {.id = item.order_id})*@
+                    @Html.ActionLink("Details", "Index", "Items", New With {.id = item.order_id}) |
+                    @Html.ActionLink("Delete", "Delete", New With {.id = item.order_id})*@
             </td>
         </tr>
     Next
 
-</table>
+</Table>

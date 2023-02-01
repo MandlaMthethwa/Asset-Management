@@ -6,21 +6,6 @@
 End Code
 
 <h2>Edit</h2>
-<table>
-        <tr>
-            <th>Item Name</th>
-            <th>Description</th>
-            <th>Quantity</th>
-            <th>Manufacturer</th>
-
-        </tr>
-        <tr>
-            <td>@ViewBag.Items.item_name</td>
-            <td>@ViewBag.Items.description</td>
-            <td>@ViewBag.Items.quantity</td>
-            <td>@ViewBag.Items.manufacture</td>
-        </tr>
-    </table>
 @Using (Html.BeginForm())
     @Html.AntiForgeryToken()
 

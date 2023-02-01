@@ -30,7 +30,7 @@ End Code
             </tr>
         </table>
         <hr />
-        <div>@Html.Action("ItemsOrderd", New With {.htmlAttributes = New With {.id = ViewBag.OrderID}})</div>
+        <div>@Html.Action("ItemsOrdered", New With {.htmlAttributes = New With {.id = ViewBag.OrderID}})</div>
 
         <h3> Add Item</h3>
         <Table>

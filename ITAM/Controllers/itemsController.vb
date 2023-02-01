@@ -32,9 +32,9 @@ Namespace Controllers
             End If
             Return View(item)
         End Function
-        Function ItemsOrderd(ByVal OrderId As Integer?) As ActionResult
+        Function ItemsOrdered(ByVal OrderId As Integer?) As ActionResult
             Dim item = db.items.Where(Function(f) f.order_id = OrderId)
-            Return View(item.ToList())
+            Return PartialView(item.ToList())
         End Function
 
         ' GET: items/Create

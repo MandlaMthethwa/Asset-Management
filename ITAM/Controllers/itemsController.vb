@@ -18,7 +18,6 @@ Namespace Controllers
         ' GET: items
         Function Index() As ActionResult
             Dim items = db.items.Include(Function(r) r.order)
-            'Dim items = db.items.Where(Function(f) f.order_id = OrderId)
             Return View(items.ToList())
         End Function
 
@@ -33,8 +32,7 @@ Namespace Controllers
             End If
             Return View(item)
         End Function
-        Function Items(ByVal OrderId As Integer?) As ActionResult
-
+        Function ItemsOrderd(ByVal OrderId As Integer?) As ActionResult
             Dim item = db.items.Where(Function(f) f.order_id = OrderId)
             Return View(item.ToList())
         End Function

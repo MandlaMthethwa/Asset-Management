@@ -2,7 +2,7 @@
 @Code
     ViewData("Title") = "Index"
 End Code
-<link rel="stylesheet" href="../Content/site.css" />
+<link rel="stylesheet" href="../Content/site" />
 
 <h2>Orders</h2>
 <div><a class="button-add" @Html.ActionLink("Add a new order", "Create")> </a> </div>
@@ -43,10 +43,12 @@ End Code
 
             <td>
                 @Html.ActionLink("Edit", "Edit", New With {.id = item.order_id}) |
-                @*@Html.Action("Create", "Items", New With {.id = item.order_id})*@
+                @*@Html.ActionLink("ItemsOrderd", "Items", New With {.htmlAttributes = New With {.id = item.order_id}})*@
                 |
+                <a class="btn button-add" href="@Url.Action("create", "items", New With {.id = item.order_id})">Add or Edit Items</a>
+                @*<a id="item.order_id" href="../Items/Create">Create</a>
                 @Html.ActionLink("Details", "Index", "Items", New With {.id = item.order_id}) |
-                @Html.ActionLink("Delete", "Delete", New With {.id = item.order_id})
+                @Html.ActionLink("Delete", "Delete", New With {.id = item.order_id})*@
             </td>
         </tr>
     Next

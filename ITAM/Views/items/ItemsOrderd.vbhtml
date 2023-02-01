@@ -1,13 +1,12 @@
 ﻿@ModelType IEnumerable(Of ITAM.item)
 
-@Code
-End Code
+
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="../Content/site.css" />
+    <link rel="stylesheet" href="../Content/site" />
     <title>Items</title>
 </head>
 <body>

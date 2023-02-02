@@ -8,6 +8,7 @@ Imports System.Web
 Imports System.Web.Mvc
 Imports System.Web.Services
 Imports ITAM
+Imports PagedList
 
 Namespace Controllers
     Public Class ordersController
@@ -20,10 +21,7 @@ Namespace Controllers
         Function Index() As ActionResult
 
             Dim orders = db.orders
-
-
-
-            Return View(orders.ToList())
+            Return View(orders)
         End Function
 
         ' GET: orders/Details/5
@@ -37,7 +35,6 @@ Namespace Controllers
             End If
             Return View(order)
         End Function
-
 
 
         ' GET: orders/Create

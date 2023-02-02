@@ -87,7 +87,6 @@ Namespace Controllers
                 db.Entry(item).State = EntityState.Modified
                 db.SaveChanges()
                 Dim orderID = db.items.Where(Function(o) o.order_id = item.order_id).Select(Function(o) o.order_id).FirstOrDefault()
-
                 Return RedirectToAction("Create", "items", New With {.OrderId = item.order_id})
             End If
             Return View(item)
@@ -116,7 +115,6 @@ Namespace Controllers
             db.SaveChanges()
             Return RedirectToAction("Create", "items", New With {.OrderId = ViewBag.OrderId})
         End Function
-
         Protected Overrides Sub Dispose(ByVal disposing As Boolean)
             If (disposing) Then
                 db.Dispose()

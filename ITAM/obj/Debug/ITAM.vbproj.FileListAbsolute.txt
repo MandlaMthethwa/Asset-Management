@@ -222,3 +222,7 @@ C:\Users\Mandla\Desktop\Asset-Management\ITAM\obj\Debug\ITAM.vbproj.CopyComplete
 C:\Users\Mandla\Desktop\Asset-Management\ITAM\obj\Debug\ITAM.dll
 C:\Users\Mandla\Desktop\Asset-Management\ITAM\obj\Debug\ITAM.xml
 C:\Users\Mandla\Desktop\Asset-Management\ITAM\obj\Debug\ITAM.pdb
+C:\Users\Mandla\Desktop\Asset-Management\ITAM\bin\PagedList.dll
+C:\Users\Mandla\Desktop\Asset-Management\ITAM\bin\PagedList.Mvc.dll
+C:\Users\Mandla\Desktop\Asset-Management\ITAM\bin\PagedList.xml
+C:\Users\Mandla\Desktop\Asset-Management\ITAM\bin\PagedList.Mvc.xml

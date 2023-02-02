@@ -48,7 +48,7 @@ End Code
     @Html.AntiForgeryToken()
 
     @<div class="form-actions no-color">
-        <input type="submit" value="Delete" class="btn btn-default" OrderID = "ViewBag.OrderID"/>
-    </div>
+    <input type="submit" value="Delete" class="btn btn-default" onclick="location.href='@Url.Action("create", "items", New With {.OrderID = ViewBag.OrderID})'" />
+</div>
 End Using
 @*<a Class="btn button-add" href="@Url.Action("create", New With {.OrderID = ViewBag.OrderID})">Cancel</a>*@

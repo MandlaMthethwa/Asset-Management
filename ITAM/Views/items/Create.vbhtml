@@ -31,7 +31,6 @@ End Code
         </table>
         <hr />
         <div>@Html.Action("ItemsOrdered", New With {.htmlAttributes = New With {.id = ViewBag.OrderID}})</div>
-
         <h3> Add Item</h3>
         <Table>
             <tr>
@@ -69,7 +68,6 @@ End Code
         <div>
             <a style="text-align: right; float:right;" Class="btn button-add" @Html.ActionLink("Done", "Index", "Orders") |
         <a style = "text-align: right; float:left;" Class="btn button-add" @Html.ActionLink("Add a new order", "Create", "Orders")
-
         </div>
 
     </div>

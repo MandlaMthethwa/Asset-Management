@@ -5,16 +5,14 @@ End Code
 <link rel="stylesheet" href="../Content/site" />
 
 <h2>Orders</h2>
-<br />
-<br />
 
-<div> <a Class="button-add" @Html.ActionLink("Add a new order", "Create")> </a> </div>
+@Using (Html.BeginForm())
+    @Html.AntiForgeryToken()
+    @<div> <a Class="button-add" style="float:left" href ="@Url.Action("Create")"> Add a new order</a> </div> @<br/>@<br/>
 
-
-
-    <Table Class="table">
-    <tr>
-        <th>
+    @<Table style="width:150%" Class="table">
+       <tr>
+            <th>
             @Html.DisplayNameFor(Function(model) model.order_number)
         </th>
         <th>
@@ -26,34 +24,31 @@ End Code
         <th>
             @Html.DisplayNameFor(Function(model) model.invoice_number)
         </th>
-        <th></th>
+        <th> Action</th>
     </tr>
 
     @For Each item In Model
-        @<tr>
-            <td>
-                @Html.DisplayFor(Function(modelItem) item.order_number)
-            </td>
-            <td>
-                @Html.DisplayFor(Function(modelItem) item.order_date)
-            </td>
-            <td>
-                @Html.DisplayFor(Function(modelItem) item.eta)
-            </td>
-            <td>
-                @Html.DisplayFor(Function(modelItem) item.invoice_number)
-            </td>
+    @<tr>
+        <td>
+            @Html.DisplayFor(Function(modelItem) item.order_number)
+        </td>
+        <td>
+            @Html.DisplayFor(Function(modelItem) item.order_date)
+         </td>
+         <td>
+            @Html.DisplayFor(Function(modelItem) item.eta)
+          </td>
+         <td>
+            @Html.DisplayFor(Function(modelItem) item.invoice_number)
+         </td>
 
-            <td>
-                <a class="btn button-add" href="@Url.Action("Edit", New With {.id = item.order_id})">Update Order details</a>
-                @*@Html.ActionLink("ItemsOrderd", "Items", New With {.htmlAttributes = New With {.id = item.order_id}})*@
-
-                <a class="btn button-add" href="@Url.Action("create", "items", New With {.OrderID = item.order_id})">Add or Edit Items</a>
-                @*<a id="item.order_id" href="../Items/Create">Create</a>
-                    @Html.ActionLink("Details", "Index", "Items", New With {.id = item.order_id}) |
-                    @Html.ActionLink("Delete", "Delete", New With {.id = item.order_id})*@
-            </td>
-        </tr>
+        <td>
+            <a class="btn button-update" href="@Url.Action("Edit", New With {.id = item.order_id})">Update Order details</a>
+            <a class="btn button-update" href="@Url.Action("create", "items", New With {.OrderID = item.order_id})">Add or Edit Items</a> 
+            <a class="btn  button-delete" href="@Url.Action("Delete", New With {.id = item.order_id})">Remove Order</a>
+         </td>
+       </tr>
     Next
 
-</Table>
+    </Table>
+End Using

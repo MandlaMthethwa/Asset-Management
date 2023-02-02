@@ -9,59 +9,38 @@ End Code
 @Using (Html.BeginForm())
     @Html.AntiForgeryToken()
 
-
-
-
-    @<div class="form-horizontal">
+    @<Table class="table">
+    <tr><th>Order Number</th> <th>Order Date</th> <th>ETA</th> <th>Invoice Number</th><th>Action</th></tr>
     
-    <hr />
-    @Html.ValidationSummary(True, "", New With {.class = "text-danger"})
-    @Html.HiddenFor(Function(model) model.order_id)
-
-
-    <div class="form-group">
-        @Html.LabelFor(Function(model) model.order_number, htmlAttributes:=New With {.class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(Function(model) model.order_number, New With {.htmlAttributes = New With {.class = "form-control"}})
-            @Html.ValidationMessageFor(Function(model) model.order_number, "", New With {.class = "text-danger"})
+    <tr>
+    <td>
+    @Html.EditorFor(Function(model) model.order_number, New With {.htmlAttributes = New With {.class = "form-control"}})
+    @Html.ValidationMessageFor(Function(model) model.order_number, "", New With {.class = "text-danger"})
+        </td>
+    <td>
+        @Html.EditorFor(Function(model) model.order_date, New With {.htmlAttributes = New With {.class = "form-control"}})
+        @Html.ValidationMessageFor(Function(model) model.order_date, "", New With {.class = "text-danger"})
+    </td>
+    <td>
+        @Html.EditorFor(Function(model) model.eta, New With {.htmlAttributes = New With {.class = "form-control"}})
+        @Html.ValidationMessageFor(Function(model) model.eta, "", New With {.class = "text-danger"})
+    </td>
+    <td>
+        @Html.EditorFor(Function(model) model.invoice_number, New With {.htmlAttributes = New With {.class = "form-control"}})
+        @Html.ValidationMessageFor(Function(model) model.invoice_number, "", New With {.class = "text-danger"})
+    </td>
+    <td>
+        <input type="submit" value="Update" class="btn button-update" />
+    </td>
+    </tr>
+    </Table>
+     @<div>
+            <a style = "text-align: right; float:right;" Class="btn button-add" @Html.ActionLink("Cancel", "Index")
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(Function(model) model.order_date, htmlAttributes:=New With {.class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(Function(model) model.order_date, New With {.htmlAttributes = New With {.class = "form-control"}})
-            @Html.ValidationMessageFor(Function(model) model.order_date, "", New With {.class = "text-danger"})
-        </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(Function(model) model.eta, htmlAttributes:=New With {.class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(Function(model) model.eta, New With {.htmlAttributes = New With {.class = "form-control"}})
-            @Html.ValidationMessageFor(Function(model) model.eta, "", New With {.class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(Function(model) model.invoice_number, htmlAttributes:=New With {.class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(Function(model) model.invoice_number, New With {.htmlAttributes = New With {.class = "form-control"}})
-            @Html.ValidationMessageFor(Function(model) model.invoice_number, "", New With {.class = "text-danger"})
-        </div>
-    </div>
-
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
-        </div>
-    </div>
-</div>
 End Using
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 
 @Section Scripts
     @Scripts.Render("~/bundles/jqueryval")

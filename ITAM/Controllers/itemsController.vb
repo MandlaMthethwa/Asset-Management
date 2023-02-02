@@ -114,7 +114,7 @@ Namespace Controllers
             ViewBag.OrderId = item.order_id
             db.items.Remove(item)
             db.SaveChanges()
-            Return RedirectToAction("Create", "items", New With {.OrderId = item.order_id})
+            Return RedirectToAction("Create", "items", New With {.OrderId = ViewBag.OrderId})
         End Function
 
         Protected Overrides Sub Dispose(ByVal disposing As Boolean)

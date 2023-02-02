@@ -8,7 +8,6 @@ End Code
 
 @Using (Html.BeginForm())
     @Html.AntiForgeryToken()
-
     @<div class="form-horizontal">
 
         <hr />
@@ -46,12 +45,9 @@ End Code
         <div style="display:none">
             @Html.EditorFor(Function(model) model.order_id, New With {.Value = ViewBag.OrderID})
         </div>
-        
-
     </div>
 End Using
 @*<a Class="btn button-add" href="@Url.Action("create", New With {.OrderID = item.order_id})">Cancel</a>*@
-
 
 @Section Scripts
     @Scripts.Render("~/bundles/jqueryval")

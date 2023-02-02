@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\ITAM",
+    "\\ITAM\\Views",
+    "\\ITAM\\Views\\items"
   ],
-  "SelectedNode": "\\ITAM.sln",
   "PreviewInSolutionExplorer": false
 }

@@ -16,9 +16,11 @@ Namespace Controllers
         Private db As New itamDB
 
         ' GET: items
-        Function Index() As ActionResult
-            Dim items = db.items.Include(Function(r) r.order)
-            Return View(items.ToList())
+        Function Index(page As Integer?) As ActionResult
+            Dim pageSize As Integer = 3
+            Dim pageNumber As Integer = (If(page, 1))
+            Dim items = db.items.OrderBy(Function(x) x.order_id).Skip((pageNumber - 1) * pageSize).Take(pageSize)
+            Return View(items)
         End Function
 
         ' GET: items/Details/5
@@ -109,10 +111,9 @@ Namespace Controllers
         <ValidateAntiForgeryToken()>
         Function DeleteConfirmed(ByVal id As Integer) As ActionResult
             Dim item As item = db.items.Find(id)
+            ViewBag.OrderId = item.order_id
             db.items.Remove(item)
             db.SaveChanges()
-            ViewBag.OrderId = item.order_id
-            Dim orderID = db.items.Where(Function(o) o.order_id = item.order_id).Select(Function(o) o.order_id).FirstOrDefault()
             Return RedirectToAction("Create", "items", New With {.OrderId = item.order_id})
         End Function
 

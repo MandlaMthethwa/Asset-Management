@@ -40,16 +40,15 @@ End Code
             @Html.DisplayFor(Function(model) model.manufacture)
         </td>
 
-        <td>
-            <input type="submit" value="Delete" class="btn button-delete" />
-        </td>
+        
     </tr>
 </table>
 
 @Using (Html.BeginForm())
     @Html.AntiForgeryToken()
 
-
-
+    @<div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-default" OrderID = "ViewBag.OrderID"/>
+    </div>
 End Using
 @*<a Class="btn button-add" href="@Url.Action("create", New With {.OrderID = ViewBag.OrderID})">Cancel</a>*@

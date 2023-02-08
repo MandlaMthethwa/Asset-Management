@@ -6,10 +6,9 @@
 End Code
 
 <h2>Edit</h2>
-@Using (Html.BeginForm())
     @Html.AntiForgeryToken()
 
-    @<Table class="table">
+    <Table class="table">
     <tr><th>Order Number</th> <th>Order Date</th> <th>ETA</th> <th>Invoice Number</th><th>Action</th></tr>
     
     <tr>
@@ -31,14 +30,11 @@ End Code
     </td>
     <td>
         <input type="submit" value="Update" class="btn button-update" />
+        <a  Class="btn button-update" @Html.ActionLink("Cancel", "Index")
+
     </td>
     </tr>
     </Table>
-     @<div>
-            <a style = "text-align: right; float:right;" Class="btn button-add" @Html.ActionLink("Cancel", "Index")
-        </div>
-
-End Using
 
 
 

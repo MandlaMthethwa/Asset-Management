@@ -2,7 +2,7 @@
 @Code
     ViewData("Title") = "Create"
 End Code
-<link rel="stylesheet" href="../Content/site.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <h2>Add Item</h2>
 
@@ -35,7 +35,7 @@ End Code
         <Table>
             <tr>
                 <td>
-                    @Html.EditorFor(Function(model) model.item_name, New With {.htmlAttributes = New With {.class = "form-control", .placeholder = "Enter Item Name"}})
+                    @Html.EditorFor(Function(model) model.item_name, New With {.htmlAttributes = New With {.class = "form-control", .placeholder = "Enter Item Name", .id = "firstInputField"}})
                     @Html.ValidationMessageFor(Function(model) model.item_name, "", New With {.class = "text-danger"})
 
                 </td>
@@ -74,8 +74,8 @@ End Code
 End Using
 
 <script>
-    $(document).ready(function() {
-        $("input:text:visible:first").focus();
+    $(document).ready(function () {
+        $("#firstInputField").focus();
     });
 </script>
 

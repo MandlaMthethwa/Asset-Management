@@ -17,6 +17,13 @@ body {
 .container {
     display: flex;
 }
+main {
+    float: left;
+    width: 80%;
+    height: 100%;
+    padding: 20px;
+}
+
 
 
 * {
@@ -37,10 +44,11 @@ body {
     }
 
 
-nav {
+/*nav {
     position: fixed;
     width: 100%;
     z-index: 10;
+    height: 75px;
 }
 
     nav.scrolled {
@@ -58,14 +66,52 @@ nav {
             display: inline-block;
             z-index: 1;
             color: black;
+
         }
 
         nav ul ul {
             display: none;
-            position: absolute;
-            background-color: rgba(128, 128, 128, 0.589);
-            float: center;
+            position: absolute;*/
+/*            background-color: rgba(128, 128, 128, 0.589);
+*/            
+        /*}*/
+nav {
+    float: right;
+    z-index: 10;
+
+}
+    nav ul {
+        float: right;
+        list-style: none;
+        padding: 25px;
+        margin: 0;
+    }
+        nav ul li {
+            display: inline-block;
+            z-index: 1;
+            color: black;
         }
+
+        nav ul ul {
+            display: none;
+            position: absolute;            
+            background-color: rgba(128, 128, 128, 0.589);
+
+        }
+
+        nav ul li a {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: white;
+            text-decoration: none;
+            margin: 5px 0 0 20px;
+            display: block;
+        }
+    nav a:hover {
+        color: rgb(73, 87, 211);
+    }
+
 
         nav ul li:hover > ul {
             display: inherit;
@@ -76,7 +122,7 @@ nav {
             text-decoration: none;
         }
 
-    nav a {
+  /*  nav a {
         font-size: 14px;
         font-weight: 600;
         text-transform: uppercase;
@@ -84,18 +130,22 @@ nav {
         text-decoration: none;
         margin: 5px 0 0 20px;
         display: block;
-    }
-
-        nav a:hover {
+    }*/
+            /* nav a:hover {
             color: rgb(73, 87, 211);
         }
-
-.logo {
+*/
+            .logo {
     height: 75px;
     float: left;
-    background-color: auto;
 }
-
+.header {
+    background-color: white;
+    padding: 10px;
+    margin-right: 100px;
+    margin-left: 100px;
+    border: 1px solid #ddd;
+}
     .logo::before,
     .logo::after {
         position: absolute;
@@ -140,8 +190,28 @@ section {
         opacity: 1;
     }
 }
+.fa, .fas {
+    font-weight: 900;
+}
 
-.btn {
+.fa, .far, .fas {
+    font-family: "Font Awesome 5 Free";
+}
+
+.fa-2x {
+    font-size: 2em;
+}
+
+.fa, .fab, .fad, .fal, .far, .fas {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+}
+ .btn {
     display: inline-block;
     margin-bottom: 0;
     font-weight: 400;
@@ -167,13 +237,31 @@ section {
     background-color: #4477b3;
     border-color: #4477b3;
 }
-
-html {
-    font-size: 62.5%;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    scroll-padding-top: 6rem;
+.toggle-btn {
+    width: 35px;
+    position: absolute;
+    right: 80px;
+    top: 40px;
+    display: none;
+    color:black;
+    cursor:pointer
 }
+    .toggle-btn span{
+        display:inline-block;
+        width:100%;
+        height:2px;
+        float:left;
+        margin-bottom:8px;
+        background:white;
+         }
+
+
+    html {
+        font-size: 62.5%;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+        scroll-padding-top: 6rem;
+    }
 .viewBag{
     font-size:50%;
     color:white;
@@ -351,13 +439,64 @@ button, select {
 /* Assets */
 /* ----------------------------------------------- */
 
-.section-assets .long-copy {
-    margin-bottom: 50px;
-    display: center;
-}
 
 .theframe {
     width: 100%;
     height: 100%;
     align-content: center;
 }
+
+@media (max-width:1240px) {
+    .toggle-btn {
+        display: block
+    }
+
+    nav {
+        display: none;
+        width: 100%;
+        border-top: 1px solid #000;
+    
+    }
+
+        nav ul li {
+            padding: 15px 0px;
+            width: 100%;
+        }
+
+        nav.show {
+            display: block;
+        }
+}
+
+
+@media (max-width: 1024px) {
+    .table {
+        width: 100%;
+        border: 1px solid #ddd;
+    }
+
+    th, td, tr {
+        border: 1px solid #ddd;
+    }
+
+  }
+
+@Media (max-width:480px) {
+    body {
+        background-size: cover;
+        background: -webkit-linear-gradient(rgba(0, 0, 0, 0.600), rgba(0, 0, 0, 0.500)), url(https://prontocs.co.za/wp-content/uploads/2018/01/shutterstock_572801542.jpg) no-repeat;
+        background: linear-gradient(rgba(0, 0, 0, 0.600), rgba(0, 0, 0, 0.500)), url(https://prontocs.co.za/wp-content/uploads/2018/01/shutterstock_572801542.jpg) no-repeat;
+        background-repeat: no-repeat;
+    }
+    th, td, tr {
+        border: 2px solid #ddd;
+        text-align: left;
+        padding: 8px;
+        background-color: #f2f2f2;
+    }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+}
+

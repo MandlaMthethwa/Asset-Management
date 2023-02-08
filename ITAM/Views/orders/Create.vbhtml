@@ -6,11 +6,10 @@ End Code
 
 <h2>Add a new Order</h2>
 
-@Using (Html.BeginForm())
     @Html.AntiForgeryToken()
 
 
-    @<div class="form-horizontal">
+    <div class="form-horizontal">
         <h3></h3>
         <hr />
         @Html.ValidationSummary(True, "", New With {.class = "text-danger"})
@@ -26,11 +25,13 @@ End Code
                     @Html.ValidationMessageFor(Function(model) model.eta, "", New With {.class = "text-danger"})
                 </td>
                 <td>
-                    @Html.EditorFor(Function(model) model.invoice_number, New With {.htmlAttributes = New With {.class = "form-control", .placeholder = "Enter order nuber"}})
+                    @Html.EditorFor(Function(model) model.invoice_number, New With {.htmlAttributes = New With {.class = "form-control", .placeholder = "Enter invoice nuber"}})
                     @Html.ValidationMessageFor(Function(model) model.invoice_number, "", New With {.class = "text-danger"})
                 </td>
                 <td>
                     <input type="submit" value="Add Order" Class="btn button-add" />
+                    <a Class="btn button-add" @Html.ActionLink("Cancel", "Index")
+
                 </td>
             </tr>
         </table>
@@ -40,10 +41,8 @@ End Code
         </div>
 
         <div>
-            <a style="text-align: right; float:right;" Class="btn button-add" @Html.ActionLink("Cancel", "Index")
         </div>
     </div>
-End Using
 
 
 @Section Scripts

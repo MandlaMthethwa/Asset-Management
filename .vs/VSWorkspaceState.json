@@ -2,8 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\ITAM",
+    "\\ITAM\\Content",
     "\\ITAM\\Views",
-    "\\ITAM\\Views\\items"
+    "\\ITAM\\Views\\items",
+    "\\ITAM\\Views\\orders",
+    "\\ITAM\\Views\\Shared"
   ],
+  "SelectedNode": "\\ITAM\\Content\\Site.css",
   "PreviewInSolutionExplorer": false
 }

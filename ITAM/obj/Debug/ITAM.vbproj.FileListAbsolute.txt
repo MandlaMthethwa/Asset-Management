@@ -226,3 +226,17 @@ C:\Users\Mandla\Desktop\Asset-Management\ITAM\bin\PagedList.dll
 C:\Users\Mandla\Desktop\Asset-Management\ITAM\bin\PagedList.Mvc.dll
 C:\Users\Mandla\Desktop\Asset-Management\ITAM\bin\PagedList.xml
 C:\Users\Mandla\Desktop\Asset-Management\ITAM\bin\PagedList.Mvc.xml
+C:\Users\Mandla\Desktop\Asset-Management\ITAM\bin\Microsoft.Office.Client.Policy.dll
+C:\Users\Mandla\Desktop\Asset-Management\ITAM\bin\Microsoft.Office.Client.TranslationServices.dll
+C:\Users\Mandla\Desktop\Asset-Management\ITAM\bin\Microsoft.Office.SharePoint.Tools.dll
+C:\Users\Mandla\Desktop\Asset-Management\ITAM\bin\Microsoft.Online.SharePoint.Client.Tenant.dll
+C:\Users\Mandla\Desktop\Asset-Management\ITAM\bin\Microsoft.ProjectServer.Client.dll
+C:\Users\Mandla\Desktop\Asset-Management\ITAM\bin\Microsoft.SharePoint.Client.dll
+C:\Users\Mandla\Desktop\Asset-Management\ITAM\bin\Microsoft.SharePoint.Client.DocumentManagement.dll
+C:\Users\Mandla\Desktop\Asset-Management\ITAM\bin\Microsoft.SharePoint.Client.Publishing.dll
+C:\Users\Mandla\Desktop\Asset-Management\ITAM\bin\Microsoft.SharePoint.Client.Runtime.dll
+C:\Users\Mandla\Desktop\Asset-Management\ITAM\bin\Microsoft.SharePoint.Client.Search.Applications.dll
+C:\Users\Mandla\Desktop\Asset-Management\ITAM\bin\Microsoft.SharePoint.Client.Search.dll
+C:\Users\Mandla\Desktop\Asset-Management\ITAM\bin\Microsoft.SharePoint.Client.Taxonomy.dll
+C:\Users\Mandla\Desktop\Asset-Management\ITAM\bin\Microsoft.SharePoint.Client.UserProfiles.dll
+C:\Users\Mandla\Desktop\Asset-Management\ITAM\bin\Microsoft.SharePoint.Client.WorkflowServices.dll

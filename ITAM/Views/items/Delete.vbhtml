@@ -6,12 +6,12 @@ End Code
 
 <h2>Delete</h2>
 
-<h3 style="color:red">Are you sure you want to delete this item?</h3>
+<h3 style="color:#cc0000">Are you sure you want to delete this item?</h3>
 
-<hr />
 
 @Using (Html.BeginForm())
     @Html.AntiForgeryToken()
+    @<hr />
     @<Table Class="table">
     <tr>
         <th>
@@ -45,11 +45,9 @@ End Code
         </td>
         <td>
             <input type="submit" value="Delete" class="btn button-delete" />
-            @*<a Class="btn button-update" style="float:right" href="@Html.Action("create", "items", New With {.OrderID = ViewBag.OrderId})">Cancel</a>*@
-
+            <a Class="btn button-update" href="@Url.Action("create", "items", New With {.OrderID = ViewBag.OrderId})">Cancel</a>
         </td>
     </tr>
 </table>
-
 End Using
 @*<a Class="btn button-add" href="@Url.Action("create", New With {.OrderID = ViewBag.OrderID})">Cancel</a>*@

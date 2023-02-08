@@ -6,51 +6,52 @@ End Code
 
 <h2>Delete</h2>
 
-<h3 style="color:red">Are you sure you want to delete this order?</h3>
+<h3 style="color: #cc0000">Are you sure you want to delete this order?</h3>
 <div>
-    <hr />
-    
+
     @Using (Html.BeginForm())
         @Html.AntiForgeryToken()
-    @<Table class="table" >
-         <tr>
-             <th>
-                 @Html.DisplayNameFor(Function(model) model.order_number)
-             </th>
-             <th>
-                 @Html.DisplayNameFor(Function(model) model.order_date)
-             </th>
-             <th>
-                 @Html.DisplayNameFor(Function(model) model.eta)
-             </th>
+        @<hr />
 
-             <th>
-                 @Html.DisplayNameFor(Function(model) model.invoice_number)
-             </th>
-             <th>Action</th>
-         </tr>
-        
-         <tr>
-             <td>
-                 @Html.DisplayFor(Function(model) model.order_number)
-             </td>
-             <td>
-                 @Html.DisplayFor(Function(model) model.order_date)
-             </td>
-             <td>
-                 @Html.DisplayFor(Function(model) model.eta)
-             </td>
-             <td>
-                 @Html.DisplayFor(Function(model) model.invoice_number)
-             </td>
-             <td>
-                 <input type="submit" value="Delete" class="btn button-delete" />
-             </td>
-         </tr>
+        @<Table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(Function(model) model.order_number)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(Function(model) model.order_date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(Function(model) model.eta)
+                </th>
 
-    </Table>
-        @<div>
-            <a style = "text-align: right; float:right;" Class="btn button-add" @Html.ActionLink("Cancel", "Index")
-        </div>
+                <th>
+                    @Html.DisplayNameFor(Function(model) model.invoice_number)
+                </th>
+                <th>Action</th>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(Function(model) model.order_number)
+                </td>
+                <td>
+                    @Html.DisplayFor(Function(model) model.order_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(Function(model) model.eta)
+                </td>
+                <td>
+                    @Html.DisplayFor(Function(model) model.invoice_number)
+                </td>
+                <td>
+                    <input type="submit" value="Delete" class="btn button-delete" />
+                    <a Class="btn button-update" @Html.ActionLink("Cancel", "Index")
+
+                </td>
+            </tr>
+
+        </Table>
+
     End Using
 </div>

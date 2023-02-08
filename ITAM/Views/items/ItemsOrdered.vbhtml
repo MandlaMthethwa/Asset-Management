@@ -34,12 +34,21 @@
                     @Html.DisplayFor(Function(modelItem) item.manufacture)
                 </td>
                 <td>
-                    <a Class="btn button-update" @Html.ActionLink("Edit Item", "Edit", New With {.id = item.item_id})
-                 <a Class="btn button-delete"  @Html.ActionLink("Remove Item", "Delete", New With {.id = item.item_id})
+                    <a Class="btn button-update" href ="@Url.Action("Edit", New With {.id = item.item_id})"><i class="fas fa-pencil-alt" style="color:white;"></i></a>
+                    <a Class="btn button-delete" href="@Url.Action("Delete", New With {.id = item.item_id})"><i class="fa-solid fa-trash"></i></a>
                 </td>
             </tr>
         Next
     </table>
+    <br />
+    @If ViewBag.PageNumber > 1 Then
+        @Html.ActionLink("<< Go back", "create", New With {.page = ViewBag.PageNumber - 1, .OrderID = ViewBag.OrderID}, New With {.class = "button-update"})
+    End If
+
+    @If ViewBag.HasMoreData Then
+        @Html.ActionLink("Show more >>", "create", New With {.page = ViewBag.PageNumber + 1, .OrderID = ViewBag.OrderID}, New With {.class = "button-update"})
+    End If
     <hr />
+
 </body>
 </html>

@@ -19,9 +19,13 @@ Partial Public Class order
     Public Property order_number As String
     <DisplayName("Order Date")>
     <DataType(DataType.Date)>
+    <DisplayFormat(DataFormatString:="{0:yyyy-MM-dd}", ApplyFormatInEditMode:=True)>
+    <Required>
     Public Property order_date As Nullable(Of Date)
     <DisplayName("ETA")>
     <DataType(DataType.Date)>
+    <DisplayFormat(DataFormatString:="{0:yyyy-MM-dd}", ApplyFormatInEditMode:=True)>
+    <Required>
     Public Property eta As Nullable(Of Date)
     <DisplayName("Invoice Number")>
     Public Property invoice_number As String

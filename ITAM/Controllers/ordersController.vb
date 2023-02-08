@@ -8,6 +8,7 @@ Imports System.Web
 Imports System.Web.Mvc
 Imports System.Web.Services
 Imports ITAM
+Imports Microsoft.SharePoint.Client.RecordsRepository
 Imports PagedList
 
 Namespace Controllers
@@ -16,34 +17,29 @@ Namespace Controllers
 
         Private db As New itamDB
 
-
         ' GET: orders
-        Function Index() As ActionResult
+        Function Index(page As Integer?) As ActionResult
+            Dim pageSize As Integer = 10
+            Dim pageNumber As Integer = (If(page, 1))
+            ViewBag.PageNumber = pageNumber
 
-            Dim orders = db.orders
+            Dim orders = db.orders.OrderBy(Function(x) x.order_id).Skip((pageNumber - 1) * pageSize).Take(pageSize)
+
+            If orders.Count() < pageSize Then
+                ViewBag.HasMoreData = False
+            Else
+                ViewBag.HasMoreData = True
+            End If
+
             Return View(orders)
         End Function
 
-        ' GET: orders/Details/5
-        Function Details(ByVal id As Integer?) As ActionResult
-            If IsNothing(id) Then
-                Return New HttpStatusCodeResult(HttpStatusCode.BadRequest)
-            End If
-            Dim order As order = db.orders.Find(id)
-            If IsNothing(order) Then
-                Return HttpNotFound()
-            End If
-            Return View(order)
-        End Function
 
 
         ' GET: orders/Create
         Function Create() As ActionResult
-
             Return View()
         End Function
-
-
 
         ' POST: orders/Create
         'To protect from overposting attacks, enable the specific properties you want to bind to, for 
@@ -74,6 +70,7 @@ Namespace Controllers
             Return db.orders.Any(Function(o) o.order_number = orderNumber)
         End Function
 
+
         ' GET: orders/Edit/5
         Function Edit(ByVal id As Integer?) As ActionResult
             If IsNothing(id) Then
@@ -83,8 +80,9 @@ Namespace Controllers
             If IsNothing(order) Then
                 Return HttpNotFound()
             End If
-            ViewBag.Items = db.items.Where(Function(a) a.order_id = id).FirstOrDefault()
-            'ViewBag.item_id = New SelectList(db.items, "item_id", "item_name", order.item_id)
+            'ViewBag.Items = db.items.Where(Function(a) a.order_id = id).FirstOrDefault()
+            'ViewBag.CurrentOrder = db.orders.Where(Function(a) a.order_id = order.order_id).FirstOrDefault()
+            'ViewBag.order_date = New SelectList(db.orders, "order_id", "order_date")
             Return View(order)
         End Function
 

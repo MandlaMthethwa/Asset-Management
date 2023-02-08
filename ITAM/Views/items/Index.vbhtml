@@ -48,5 +48,11 @@ End Code
             </td>
         </tr>
     Next
+    @If ViewBag.PageNumber > 1 Then
+        @Html.ActionLink("<< Go back", "Index", New With {.page = ViewBag.PageNumber - 1}, New With {.class = "button-update"})
+    End If
 
+    @If ViewBag.HasMoreData Then
+        @Html.ActionLink("Show more >>", "Index", New With {.page = ViewBag.PageNumber + 1}, New With {.class = "button-update"})
+    End If
 </table>

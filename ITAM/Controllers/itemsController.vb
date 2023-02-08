@@ -14,29 +14,26 @@ Namespace Controllers
         Inherits System.Web.Mvc.Controller
 
         Private db As New itamDB
-
         ' GET: items
         Function Index(page As Integer?) As ActionResult
             Dim pageSize As Integer = 3
             Dim pageNumber As Integer = (If(page, 1))
+            ViewBag.PageNumber = pageNumber
             Dim items = db.items.OrderBy(Function(x) x.order_id).Skip((pageNumber - 1) * pageSize).Take(pageSize)
             Return View(items)
         End Function
-
-        ' GET: items/Details/5
-        Function Details(ByVal id As Integer?) As ActionResult
-            If IsNothing(id) Then
-                Return New HttpStatusCodeResult(HttpStatusCode.BadRequest)
+        Function ItemsOrdered(ByVal OrderId As Integer?, ByVal Page As Integer?) As ActionResult
+            Dim pageSize As Integer = 3
+            Dim pageNumber As Integer = (If(Page, 1))
+            ViewBag.PageNumber = pageNumber
+            ViewBag.OrderID = OrderId
+            Dim items = db.items.OrderBy(Function(x) x.order_id).Where(Function(f) f.order_id = OrderId).Skip((pageNumber - 1) * pageSize).Take(pageSize)
+            If items.Count() < pageSize Then
+                ViewBag.HasMoreData = False
+            Else
+                ViewBag.HasMoreData = True
             End If
-            Dim item As item = db.items.Find(id)
-            If IsNothing(item) Then
-                Return HttpNotFound()
-            End If
-            Return View(item)
-        End Function
-        Function ItemsOrdered(ByVal OrderId As Integer?) As ActionResult
-            Dim item = db.items.Where(Function(f) f.order_id = OrderId)
-            Return PartialView(item.ToList())
+            Return PartialView(items.ToList())
         End Function
 
         ' GET: items/Create

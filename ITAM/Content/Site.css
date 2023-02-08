@@ -44,37 +44,7 @@ main {
     }
 
 
-/*nav {
-    position: fixed;
-    width: 100%;
-    z-index: 10;
-    height: 75px;
-}
 
-    nav.scrolled {
-        background: white;
-    }
-
-    nav ul {
-        float: right;
-        list-style: none;
-        padding: 25px;
-        margin: 0;
-    }
-
-        nav ul li {
-            display: inline-block;
-            z-index: 1;
-            color: black;
-
-        }
-
-        nav ul ul {
-            display: none;
-            position: absolute;*/
-/*            background-color: rgba(128, 128, 128, 0.589);
-*/            
-        /*}*/
 nav {
     float: right;
     z-index: 10;
@@ -122,20 +92,7 @@ nav {
             text-decoration: none;
         }
 
-  /*  nav a {
-        font-size: 14px;
-        font-weight: 600;
-        text-transform: uppercase;
-        color: white;
-        text-decoration: none;
-        margin: 5px 0 0 20px;
-        display: block;
-    }*/
-            /* nav a:hover {
-            color: rgb(73, 87, 211);
-        }
-*/
-            .logo {
+    .logo {
     height: 75px;
     float: left;
 }
@@ -455,17 +412,11 @@ button, select {
         display: none;
         width: 100%;
         border-top: 1px solid #000;
-    
     }
-
-        nav ul li {
-            padding: 15px 0px;
-            width: 100%;
-        }
-
         nav.show {
             display: block;
         }
+ 
 }
 
 
@@ -498,5 +449,16 @@ button, select {
         tr:nth-child(even) {
             background-color: #f2f2f2
         }
+
+    input[type=text],
+    input[type=email], input[type=date], input[type=file], input[type=number],
+    select,
+    textarea{
+        width: 100%;
+        padding: 7px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+    }
+
 }
 

@@ -14,17 +14,14 @@ Imports PagedList
 Namespace Controllers
     Public Class ordersController
         Inherits System.Web.Mvc.Controller
-
         Private db As New itamDB
 
         ' GET: orders
         Function Index(page As Integer?) As ActionResult
-            Dim pageSize As Integer = 10
+            Dim pageSize As Integer = 9
             Dim pageNumber As Integer = (If(page, 1))
             ViewBag.PageNumber = pageNumber
-
             Dim orders = db.orders.OrderBy(Function(x) x.order_id).Skip((pageNumber - 1) * pageSize).Take(pageSize)
-
             If orders.Count() < pageSize Then
                 ViewBag.HasMoreData = False
             Else

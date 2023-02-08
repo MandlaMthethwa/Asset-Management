@@ -9,7 +9,7 @@ End Code
     <div class="table-wrapper">
 
 
-        <Table style="width:150%" Class="table fl-table">
+        <Table Class="table">
             <tr>
                 <th>
                     @Html.DisplayNameFor(Function(model) model.order_number)
@@ -50,6 +50,7 @@ End Code
 
         </Table>
         </div>
+    <div style="padding:15px">
         @If ViewBag.PageNumber > 1 Then
             @Html.ActionLink("<< Go back", "Index", New With {.page = ViewBag.PageNumber - 1}, New With {.class = "button-update"})
         End If
@@ -57,3 +58,4 @@ End Code
         @If ViewBag.HasMoreData Then
             @Html.ActionLink("Show more >>", "Index", New With {.page = ViewBag.PageNumber + 1}, New With {.class = "button-update"})
         End If
+    </div>

@@ -29,10 +29,10 @@
                         <li><a href=" @Url.Action("create", "orders")">Add a new Order</a>
                     </ul>
                 </li>
-                <li><a href="@Url.Action("create", "assets")">Book In </a></li>
-                <li><a href="@Url.Action("create", "return_asset")">Return</a></li>
-                <li><a href="@Url.Action("index", "assets")">Assets</a></li>
-                <li><a href="@Url.Action("storerooms", "Technical_Room")"> Storerooms</a></li>
+                <li><a href="#">Book In </a></li>
+                <li><a href="#">Return</a></li>
+                <li><a href="#">Assets</a></li>
+                <li><a href="#"> Storerooms</a></li>
                 @*<li><a href=" @Url.Action("index", "status") ">Status</a></li>
                     <li><a href="@Url.Action("index", "Asset_type") ">Type</a></li>
                     <li><a href=" @Url.Action("index", "received_stock") ">Received Orders</a></li>*@

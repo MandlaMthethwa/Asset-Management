@@ -6,31 +6,3 @@
 '     Manual changes to this file will be overwritten if the code is regenerated.
 ' </auto-generated>
 '------------------------------------------------------------------------------
-
-Imports System
-Imports System.Collections.Generic
-Imports System.ComponentModel
-Imports System.ComponentModel.DataAnnotations
-
-Partial Public Class item
-    <DisplayName("Item ID")>
-    Public Property item_id As Integer
-    <DisplayName("Item Name")>
-    <DataType(DataType.Text)>
-    <Required>
-    Public Property item_name As String
-    <DisplayName("Description")>
-    <DataType(DataType.Text)>
-    <Required>
-    Public Property description As String
-    <DisplayName("Quantity")>
-    <Required>
-    Public Property quantity As Integer
-    <DisplayName("Manufacure")>
-    <Required>
-    <DataType(DataType.Text)>
-    Public Property manufacture As String
-    Public Property order_id As Nullable(Of Integer)
-
-    Public Overridable Property order As order
-End Class

@@ -5,9 +5,8 @@
     "\\ITAM\\Content",
     "\\ITAM\\Views",
     "\\ITAM\\Views\\items",
-    "\\ITAM\\Views\\orders",
     "\\ITAM\\Views\\Shared"
   ],
-  "SelectedNode": "\\ITAM\\Content\\Site.css",
+  "SelectedNode": "\\ITAM\\Views\\Shared\\_Layout.vbhtml",
   "PreviewInSolutionExplorer": false
 }

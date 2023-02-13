@@ -280,7 +280,7 @@ h1 {
     letter-spacing: 1px;
 }
 
-h2,h3 {
+h2 {
     font-size: 180%;
     word-spacing: 2px;
     text-align: center;
@@ -302,6 +302,9 @@ h2,h3 {
 h3 {
     font-size: 110%;
     margin-bottom: 15px;
+    word-spacing: 2px;
+    text-align: center;
+    letter-spacing: 1px;
     color: white;
 }
 
@@ -405,7 +408,7 @@ button, select {
     align-content: center;
 }
 
-@media (max-width:1240px) {
+/*@media (max-width:1240px) {
     .toggle-btn {
         display: block
     }
@@ -415,46 +418,21 @@ button, select {
         width: 100%;
         border-top: 1px solid #000;
         top: 0;
-    }
+    }*/
 
       /*  nav ul li {
             padding: 15px 0px;
             width: 100%;
         }*/
 
-        nav.show {
+        /*nav.show {
             display: block;
         }
  
-}
+}*/
 
 @media (max-width: 800px) {
-    /*.table th {
-        display:none
-    }
-
-    .table, .table td, .table tr {
-        display:block;
-        width:100%;
-    }
-    .table tr{
-        margin-bottom:15px;
-    }
-        .table td {
-            text-align:right;
-            padding-left:50%;
-            position:relative;
-            }
-        .table td::before {
-            content:attr(data-label);
-            position:absolute;
-            left:0;
-           padding-left:15px; 
-           width:50%; 
-           font-size:15px;
-          font-weight:bold;
-          text-align:left;
-           }*/
+    
     body {
         background-size: cover;
         background: -webkit-linear-gradient(rgba(0, 0, 0, 0.600), rgba(0, 0, 0, 0.500)), url(https://prontocs.co.za/wp-content/uploads/2018/01/shutterstock_572801542.jpg) no-repeat;
@@ -476,3 +454,180 @@ button, select {
 
 
 
+/* custom scroll bar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::selection {
+    background: rgb(0,123,255,0.3);
+}
+
+.content {
+    max-width: 1250px;
+    margin: auto;
+    padding: 0px 30px;
+    margin-bottom: 50px;
+    float:right;
+}
+
+.navbar {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    padding: 25px 0;
+    transition: all 0.3s ease;
+    float: right;
+}
+
+    .navbar.sticky {
+        padding: 10px 0;
+        background: #1b1b1b;
+    }
+
+    .navbar .content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .navbar a {
+        color: #fff;
+        font-size: 30px;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .navbar .menu-list {
+        display: inline-flex;
+    }
+
+.menu-list li {
+    list-style: none;
+}
+
+    .menu-list li a {
+        color: #fff;
+        font-size: 18px;
+        font-weight: 500;
+        margin-left: 25px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+        .menu-list li a:hover {
+            color: #007bff;
+        }
+
+
+.icon {
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    display: none;
+}
+
+    .icon.cancel-btn {
+        position: absolute;
+        right: 30px;
+        top: 20px;
+    }
+
+.navbar.sticky .icon.cancel-btn {
+    top: 10px;
+}
+
+@media (max-width: 1240px) {
+    body.disabledScroll {
+        overflow: hidden;
+    }
+
+    .icon {
+        display: block;
+        height: 50px;
+        width: 50px;
+        text-align: center;
+        line-height: 50px;
+        border-radius: 50%;
+        z-index: 9;
+    }
+
+        .icon.cancel-btn {
+            display: none;
+        }
+
+            .icon.cancel-btn.show {
+                display: block;
+            }
+
+        .icon.hide {
+            display: none;
+        }
+
+    .navbar .menu-list {
+        position: fixed;
+        top: 0;
+        left:0;
+        height: 100vh;
+        width: 100%;
+        background: #222;
+        display: block;
+        padding: 40px 0;
+        text-align: center;
+        clip-path: circle(25px at calc(100% - 55px) calc(0% + 50px));
+        transition: all 0.3s ease;
+    }
+
+    .navbar.sticky .menu-list {
+         clip-path: circle(25px at calc(100% - 55px) calc(0% + 35px));
+
+    }
+
+    .navbar .menu-list.active {
+        clip-path: circle(75%);
+    }
+
+    .navbar .menu-list li {
+        margin-top: 45px;
+    }
+
+        .navbar .menu-list li a {
+            font-size: 23px;
+        }
+}
+
+li:hover > ul {
+    top: 70px;
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.3s ease;
+}
+
+ ul li a {
+    display: block;
+    width: 100%;
+    line-height: 30px;
+    border-radius: 0px !important;
+}
+
+ul ul {
+    position: absolute;
+    top: 0;
+    right: calc(-100% + 8px);
+}
+
+ul li {
+    position: relative;
+}
+
+    ul li:hover ul {
+        top: 0;
+    }

@@ -3,7 +3,9 @@
     ViewData("Title") = "Delete"
     Layout = "~/Views/Shared/_Layout.vbhtml"
 End Code
-
+<br />
+<br />
+<br />
 <h2>Delete</h2>
 
 <h3 style="color: #cc0000">Are you sure you want to delete this order?</h3>

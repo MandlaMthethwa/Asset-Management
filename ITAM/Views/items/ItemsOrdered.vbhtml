@@ -1,6 +1,4 @@
 ﻿@ModelType IEnumerable(Of ITAM.item)
-
-
 <!DOCTYPE html>
 
 <html>

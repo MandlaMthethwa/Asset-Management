@@ -3,10 +3,12 @@
     "",
     "\\ITAM",
     "\\ITAM\\Content",
+    "\\ITAM\\Controllers",
     "\\ITAM\\Views",
     "\\ITAM\\Views\\items",
+    "\\ITAM\\Views\\orders",
     "\\ITAM\\Views\\Shared"
   ],
-  "SelectedNode": "\\ITAM\\Views\\Shared\\_Layout.vbhtml",
+  "SelectedNode": "\\ITAM\\Views\\orders\\Index.vbhtml",
   "PreviewInSolutionExplorer": false
 }

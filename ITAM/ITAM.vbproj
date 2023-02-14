@@ -489,6 +489,7 @@
     <Content Include="Views\items\Index.vbhtml" />
     <Content Include="Views\orders\Items.vbhtml" />
     <Content Include="Views\items\ItemsOrdered.vbhtml" />
+    <Content Include="Views\Shared\_Navigation.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -519,6 +520,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Shared\img\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

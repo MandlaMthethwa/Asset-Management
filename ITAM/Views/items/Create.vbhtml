@@ -4,7 +4,6 @@
 End Code
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <br />
-<br />
 
 <h2>Add Item</h2>
 
@@ -35,6 +34,21 @@ End Code
         <div>@Html.Action("ItemsOrdered", New With {.htmlAttributes = New With {.id = ViewBag.OrderID}})</div>
         <h3> Add Item</h3>
         <Table>
+            <tr>
+                <th>
+                    Item Name
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    Manufacture
+                </th>
+                <th>Action</th>
+            </tr>
             <tr>
                 <td>
                     @Html.EditorFor(Function(model) model.item_name, New With {.htmlAttributes = New With {.class = "form-control", .placeholder = "Enter Item Name", .id = "firstInputField"}})
@@ -68,7 +82,7 @@ End Code
         </div>
         <br /><br />
         <div>
-            <a style="text-align: right; float:right;" Class="btn button-add" @Html.ActionLink("Done", "Index", "Orders") |
+            <a style="text-align: right; float:right;" Class="btn button-add" @Html.ActionLink("Done", "Index", "Orders")
         <a style = "text-align: right; float:left;" Class="btn button-add" @Html.ActionLink("Add a new order", "Create", "Orders")
         </div>
 

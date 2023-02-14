@@ -4,22 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Content/fontawesome-free/css/all.min.css">
-
     <title>@ViewBag.Title - ITAM</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-        @*<div class="toggle-btn" id="toggle-btn" onClick="myfunction();">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>*@
-        @*<div>
-           <img class="logo" src="https://prontocs.co.za/wp-content/uploads/2018/01/Pronto-Inverted-Transparent-Globe.png" \>
-        </div>*@
-    <header>
+    <!--<header>
         <nav class="navbar">
             <div>
                 <img class="logo" src="https://prontocs.co.za/wp-content/uploads/2018/01/Pronto-Inverted-Transparent-Globe.png" \>
@@ -39,27 +30,25 @@
                     <li><a href="#">Book In </a></li>
                     <li><a href="#">Return</a></li>
                     <li><a href="#">Assets</a></li>
-                    <li><a href="#"> Storerooms</a></li>
-                    @*<li><a href=" @Url.Action("index", "status") ">Status</a></li>
-                    <li><a href="@Url.Action("index", "Asset_type") ">Type</a></li>
-                    <li><a href=" @Url.Action("index", "received_stock") ">Received Orders</a></l*@
-                    @*<li>@Html.Partial("_LoginPartial")</li>*@
-                </ul>
+                    <li><a href="#"> Storerooms</a></li>-->
+    @*<li><a href=" @Url.Action("index", "status") ">Status</a></li>
+        <li><a href="@Url.Action("index", "Asset_type") ">Type</a></li>
+        <li><a href=" @Url.Action("index", "received_stock") ">Received Orders</a></l*@
+    @*<li>@Html.Partial("_LoginPartial")</li>*@
+    <!--</ul>
                 <div class="icon menu-btn">
                     <i class="fas fa-bars"></i>
                 </div>
             </div>
         </nav>
 
-    </header>
-    <div >
+    </header>-->
+    @Html.Partial("_Navigation")
+    <section>
         @RenderBody()
-    </div>
-
+    </section>
 
     <script type="text/javascript">
-       
-
         const body = document.querySelector("body");
         const navbar = document.querySelector(".navbar");
         const menu = document.querySelector(".menu-list");
@@ -77,12 +66,10 @@
             cancelBtn.classList.remove("show");
             body.classList.remove("disabledScroll");
         }
-
         window.onscroll = () => {
             this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
         }
     </script>
-
 </body>
 </html>
 @Scripts.Render("~/bundles/jquery")

@@ -3,10 +3,7 @@
     ViewData("Title") = "Create"
 End Code
 <link rel="stylesheet" href="../Content/site.css" />
-<br />
-<br />
-<br />
-<br />
+
 <h2>Add a new Order</h2>
 @Using (Html.BeginForm())
 

@@ -5,8 +5,7 @@ End Code
 
 
 @Html.AntiForgeryToken()
-<br />
-<br />
+
 <h2>Orders</h2>
 <div class="table-wrapper">
 

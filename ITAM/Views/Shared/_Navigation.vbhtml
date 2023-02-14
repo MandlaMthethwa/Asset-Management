@@ -1,5 +1,4 @@
-﻿
-    <header>
+﻿    <header>
         <nav class="navbar">
             <div>
                 <img class="logo" src="https://prontocs.co.za/wp-content/uploads/2018/01/Pronto-Inverted-Transparent-Globe.png" \>

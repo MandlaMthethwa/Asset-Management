@@ -276,6 +276,7 @@ h1 {
 }
 
 h2 {
+    margin-top: 80px;
     font-size: 180%;
     word-spacing: 2px;
     text-align: center;
@@ -403,28 +404,6 @@ button, select {
     align-content: center;
 }
 
-/*@media (max-width:1240px) {
-    .toggle-btn {
-        display: block
-    }
-
-    nav {
-        display: none;
-        width: 100%;
-        border-top: 1px solid #000;
-        top: 0;
-    }*/
-
-      /*  nav ul li {
-            padding: 15px 0px;
-            width: 100%;
-        }*/
-
-        /*nav.show {
-            display: block;
-        }
- 
-}*/
 
 @media (max-width: 800px) {
     
@@ -476,16 +455,18 @@ button, select {
 
 .navbar {
     position: fixed;
-    z-index: 1;
     width: 100%;
-    padding: 25px 0;
     transition: all 0.3s ease;
     float: right;
+    border-top: 1px solid #000;
+    top:0;
+    background-size: cover;
+    background-color: rgba(255, 255, 255, 0.50);
 }
 
     .navbar.sticky {
         padding: 10px 0;
-        background: #1b1b1b;
+        background: #222;
     }
 
     .navbar .content {
@@ -537,7 +518,7 @@ button, select {
     }
 
 .navbar.sticky .icon.cancel-btn {
-    top: 10px;
+    top: 15px;
 }
 
 @media (max-width: 1240px) {
@@ -579,11 +560,12 @@ button, select {
         text-align: center;
         clip-path: circle(25px at calc(100% - 55px) calc(0% + 50px));
         transition: all 0.3s ease;
+
     }
 
     .navbar.sticky .menu-list {
-         clip-path: circle(25px at calc(100% - 55px) calc(0% + 35px));
-
+        clip-path: circle(25px at calc(100% - 55px) calc(0% + 35px));
+        border-top: 1px solid #000;
     }
 
     .navbar .menu-list.active {
